@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="16" height="32" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="flatDark23" tilewidth="80" tileheight="80">
+  <image source="flatDark23.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="2" name="flatDark24" tilewidth="80" tileheight="80">
+  <image source="flatDark24.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="3" name="flatDark44" tilewidth="80" tileheight="80">
+  <image source="flatDark44.png" width="80" height="80"/>
+ </tileset>
+ <tileset firstgid="4" name="flatDark13" tilewidth="48" tileheight="48">
+  <image source="flatDark13.png" width="48" height="48"/>
+ </tileset>
+ <tileset firstgid="5" name="flatDark12" tilewidth="48" tileheight="48">
+  <image source="flatDark12.png" width="48" height="48"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="16" height="32">
+  <data encoding="base64" compression="zlib">
+   eJxjYSAfsFKgdxSMglEwCkbBKBgF5ANGPHLMeOSYoDQAT5AAEA==
+  </data>
+ </layer>
+</map>
