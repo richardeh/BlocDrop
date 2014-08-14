@@ -1,0 +1,41 @@
+[0,0,0,0,0,0,0,0,0,0,0]
+[0,0,0,0,0,0,0,0,0,0,0]
+[0,0,0,0,0,0,0,0,0,0,0]
+[0,0,0,0,0,0,0,0,0,0,0]
+[0,0,0,0,0,0,0,0,0,0,0]
+[0,0,0,0,0,4,4,0,0,0,0]
+[0,0,0,0,4,4,0,0,0,0,0]
+[0,0,0,0,0,0,0,0,0,0,0]
+[0,0,0,0,0,0,0,0,0,0,0]
+[0,0,0,0,0,0,0,0,0,0,0]
+[0,0,0,0,0,0,0,0,0,0,0]
+[0,0,0,0,0,0,0,4,0,0,0]
+[0,0,0,0,2,0,0,4,5,1,0]
+[0,0,1,1,2,3,3,4,5,1,1]
+[0,1,1,2,2,3,3,4,5,5,1]
+
+
+- graphics: traverse the grid, draw the appropriate sprites at the appropriate positions
+
+- gameplay:
+	create a new, four-unit object with a shape and start it at the top
+	create the next four-unit object and hold it in the 'ready' que
+
+	move objects downward- each tick read the x+1 position for each position 
+		in the current object and see if it's occupied, then shift the 
+		current object down by one
+
+	when the object finishes moving, check each row to see if all spaces are
+		occupied- if yes, award points, delete all values in the row, and 
+		shift the rest of the rows above it down by one.
+
+	move the "next" object to current object, and create a new "next" object
+	
+	if a new object is put into play but cannot make any moves, IE the 
+		entryway is blocked, the game is over.
+
+- controls:
+	allow the player to rotate blocks on the axis
+	allow player to move blocks left and right
+	allow player to pause the game
+	allow player to speed up the downward motion of a block
