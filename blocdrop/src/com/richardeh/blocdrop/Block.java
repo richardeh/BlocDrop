@@ -85,81 +85,174 @@ public class Block extends DynamicGameObject{
                 coords.add(point.set(15,6));
                 break;
             case Z:
-                coords.add(point.set(14,4));
                 coords.add(point.set(14,5));
-                coords.add(point.set(15,3));
+                coords.add(point.set(14,4));
                 coords.add(point.set(15,4));
+                coords.add(point.set(15,3));
                 break;
         }
 
         return coords;
     }
 
-    private void rotate(){
+    public void moveDown(){
+    	for(Vector2 v:coords){
+    		v.x-=1;
+    	}
+    }
+
+    public void moveRight(){
+    	for(Vector2 v:coords){
+    		v.y+=1;
+    	}
+    }
+    
+    public void moveLeft(){
+    	for(Vector2 v:coords){
+    		v.y-=1;
+    	}
+    }
+       
+    public void rotate(){
         float x,y;
+
+    	x = coords.get(0).x;
+    	y = coords.get(0).y;
         switch(shape){
             case L:
-                // algorithm to rotate L
+                // rotate L
                 switch(orientation){
                     case One:
+                    	break;
                     case Two:
+                    	break;
                     case Three:
-                    case Four:
-                        break;
-                }
-                break;
-            case J:
-                // algorithm to rotate J
-                switch(orientation){
-                    case One:
-                    case Two:
-                    case Three:
+                    	break;
                     case Four:
                         break;
                 }
                 break;
             case T:
-                // algorithm to rotate T
+                // rotate T
                 switch(orientation){
                     case One:
+                    	//              1
+                    	//  1 2 3 ->  0 2 
+                    	//    0         3
+                    	
+                    	coords.set(3,coords.get(0));
+                    	coords.set(0, coords.get(1));
+                    	coords.set(1, new Vector2(x, y+2));
+                    	break;
+                    	
                     case Two:
+                    	//   1        0
+                    	// 0 2  ->  3 2 1
+                    	//   3
+                    	
+                    	coords.set(0, coords.get(1));
+                    	coords.set(3, new Vector2(x, y));
+                    	coords.set(1, new Vector2(x+2,y));
+                    	break;
+                    	
                     case Three:
+                    	//   0      3
+                    	// 3 2 1 -> 2 0
+                    	//          1
+                    	
+                    	coords.set(3,coords.get(0));
+                    	coords.set(0, coords.get(1));
+                    	coords.set(1, new Vector2(x, y-2));
+                    	break;
+                    	
+                    case Four:
+                    	// 3
+                    	// 2 0 -> 1 2 3
+                    	// 1        0
+                    	
+                    	coords.set(3, coords.get(0));
+                    	coords.set(0, coords.get(1));
+                    	coords.set(1, new Vector2(x-2,y));
+                        break;
+                }
+                break;
+            case J:
+                // rotate J
+                switch(orientation){
+                    case One:
+                    	break;
+                    case Two:
+                    	break;
+                    case Three:
+                    	break;
                     case Four:
                         break;
                 }
                 break;
             case Z:
-                // algorithm to rotate Z
+                // rotate Z
                 switch(orientation){
                     case One:
+                    	//              3  
+                    	//  3 2   ->  1 2
+                    	//    1 0     0
+                    	
+                    	coords.set(1, new Vector2(x,y+1));
+                    	coords.set(2, new Vector2(x+1, y+1));
+                    	coords.set(3, new Vector2(x+1, y+2));
+                    	break;
                     case Two:
+                    	//    3          
+                    	//  1 2   ->  3 2
+                    	//  0           1 0
+                    	
+                    	coords.set(1, new Vector2(x-1,y));
+                    	coords.set(2, new Vector2(x-1, y+1));
+                    	coords.set(3, new Vector2(x-2, y+1));
                         break;
                 }
                 break;
             case S:
-                // algorithm to rotate S
+                // rotate S
                 switch(orientation){
                     case One:
+                    	//            3  
+                    	//    2 3 ->  2 1
+                    	//  0 1         0
+                    	
+                    	coords.set(1, new Vector2(x,y+1));
+                    	coords.set(2, new Vector2(x-1,y+1));
+                    	coords.set(3, new Vector2(x-1,y+2));
+                    	break;
                     case Two:
+                    	// 3
+                    	// 2 1 ->    2  3
+                    	//   0    0  1
+                    	
+                    	coords.set(1, new Vector2(x+1, y));
+                    	coords.set(2, new Vector2(x+1,y+1));
+                    	coords.set(3, new Vector2(x+1,y+2));
                         break;
                 }
                 break;
             case I:
-                // algorithm to rotate I
+                // rotate I
                 switch(orientation){
                     case One:
-                        // Vertical to horizontal
-                        x = coords.get(0).x;
-                        y = coords.get(0).y;
+                    	// 3
+                    	// 2
+                    	// 1
+                        // 0  -> 0 1 2 3
 
                         for(Vector2 v:coords){
                             v.set(x,y+coords.indexOf(v));
                         }
                         break;
                     case Two:
-                        // Horizontal to vertical
-                        x = coords.get(0).x;
-                        y = coords.get(0).y;
+                    	//             3
+                    	//             2
+                    	//             1
+                        // 0 1 2 3  -> 0
 
                         for(Vector2 v:coords){
                             v.set(x+coords.indexOf(v),y);
