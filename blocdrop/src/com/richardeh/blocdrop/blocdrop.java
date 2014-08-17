@@ -1,5 +1,7 @@
 package com.richardeh.blocdrop;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -13,42 +15,71 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class blocdrop implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-	private Texture texture;
-	private Sprite sprite;
+	private Sprite blueSprite, redSprite, greenSprite, orangeSprite,yellowSprite;
+	private Board board;
 	
 	@Override
 	public void create() {		
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
-		
-		camera = new OrthographicCamera(1, h/w);
+		Assets.load();
+		camera = new OrthographicCamera(10, 15);
 		batch = new SpriteBatch();
+		board = new Board();
+		board.start();
 		
-		texture = new Texture(Gdx.files.internal("data/libgdx.png"));
-		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		blueSprite = new Sprite(Assets.blueRegion);
+		redSprite = new Sprite(Assets.redRegion);
+		greenSprite = new Sprite(Assets.greenRegion);
+		orangeSprite = new Sprite(Assets.orangeRegion);
+		yellowSprite = new Sprite(Assets.yellowRegion);
 		
-		TextureRegion region = new TextureRegion(texture, 0, 0, 512, 275);
-		
-		sprite = new Sprite(region);
-		sprite.setSize(0.9f, 0.9f * sprite.getHeight() / sprite.getWidth());
-		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
-		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
 	}
 
 	@Override
 	public void dispose() {
 		batch.dispose();
-		texture.dispose();
+		
 	}
 
 	@Override
 	public void render() {		
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		batch.setProjectionMatrix(camera.combined);
+		ArrayList<ArrayList<Integer>> currentBoard = board.getBoard();
 		batch.begin();
-		sprite.draw(batch);
+		
+		for(int x=0;x<currentBoard.size();x++){
+			for(int y=0;y<currentBoard.get(x).size();y++){
+				switch(currentBoard.get(x).get(y)){
+					case 0:
+						break;
+					case 1:
+						blueSprite.setPosition(32*x, 32*y);
+						blueSprite.draw(batch);
+						break;
+					case 2:
+						redSprite.setPosition(32*x, 32*y);
+						redSprite.draw(batch);
+						break;
+					case 3:
+						orangeSprite.setPosition(32*x,32*y);
+						orangeSprite.draw(batch);
+						break;
+					case 4:
+						yellowSprite.setPosition(32*x,32*y);
+						yellowSprite.draw(batch);
+						break;
+					case 5:
+						greenSprite.setPosition(32*x, 32*y);
+						greenSprite.draw(batch);
+						break;
+						default:
+							break;
+				}
+			}
+		}
+		
 		batch.end();
 	}
 

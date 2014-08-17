@@ -32,11 +32,11 @@ public class Assets {
 		greenSquare = new Texture(Gdx.files.internal("green.png"));
 		yellowSquare = new Texture(Gdx.files.internal("yellow.png"));
 		
-		redRegion = new TextureRegion(redSquare);
-		blueRegion = new TextureRegion(blueSquare);
-		orangeRegion = new TextureRegion(orangeSquare);
-		greenRegion = new TextureRegion(greenSquare);
-		yellowRegion = new TextureRegion(yellowSquare);
+		redRegion = new TextureRegion(redSquare, 0, 0, 32,32);
+		blueRegion = new TextureRegion(blueSquare, 0, 0, 32,32);
+		orangeRegion = new TextureRegion(orangeSquare, 0, 0, 32,32);
+		greenRegion = new TextureRegion(greenSquare, 0, 0, 32,32);
+		yellowRegion = new TextureRegion(yellowSquare, 0, 0, 32,32);
 	}
 	
 	public static void playSound(Sound sound){
