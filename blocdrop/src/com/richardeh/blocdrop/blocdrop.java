@@ -27,6 +27,14 @@ public class blocdrop implements ApplicationListener {
 		batch = new SpriteBatch();
 		board = new Board();
 		board.start();
+		for(ArrayList<Integer> row:board.getBoard()){
+			for(int i:row){
+				System.out.print(i+" ");
+			}
+			System.out.println();
+		}
+		System.out.println(board.getBoard().size());
+		System.out.println(board.getBoard().get(0).size());
 		
 		blueSprite = new Sprite(Assets.blueRegion);
 		redSprite = new Sprite(Assets.redRegion);
@@ -47,40 +55,42 @@ public class blocdrop implements ApplicationListener {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		ArrayList<ArrayList<Integer>> currentBoard = board.getBoard();
-		batch.begin();
+		
 		
 		for(int x=0;x<currentBoard.size();x++){
 			for(int y=0;y<currentBoard.get(x).size();y++){
+				batch.begin();
 				switch(currentBoard.get(x).get(y)){
 					case 0:
 						break;
 					case 1:
-						blueSprite.setPosition(32*x, 32*y);
+						blueSprite.setPosition(32*y, 32*x);
 						blueSprite.draw(batch);
 						break;
 					case 2:
-						redSprite.setPosition(32*x, 32*y);
+						redSprite.setPosition(32*y, 32*x);
 						redSprite.draw(batch);
 						break;
 					case 3:
-						orangeSprite.setPosition(32*x,32*y);
+						orangeSprite.setPosition(32*y,32*x);
 						orangeSprite.draw(batch);
 						break;
 					case 4:
-						yellowSprite.setPosition(32*x,32*y);
+						yellowSprite.setPosition(32*y,32*x);
 						yellowSprite.draw(batch);
 						break;
 					case 5:
-						greenSprite.setPosition(32*x, 32*y);
+						greenSprite.setPosition(32*y, 32*x);
 						greenSprite.draw(batch);
 						break;
 						default:
 							break;
 				}
+				batch.end();
 			}
 		}
 		
-		batch.end();
+		
 	}
 
 	@Override
