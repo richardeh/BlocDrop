@@ -29,11 +29,12 @@ public class Block extends DynamicGameObject{
     private Shape shape;
     private Orientation orientation;
 		
-	public Block(float x, float y, float width, float height, Shape shape){
+	public Block(float x, float y, float width, float height, Shape shape, int value){
 		super(x,y,width,height);
         this.shape = shape;
         coords = prevCoords = setStartCoords();
         orientation = Orientation.One;
+        this.value = value;
 	}
 
 
