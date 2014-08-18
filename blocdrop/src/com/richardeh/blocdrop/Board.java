@@ -1,17 +1,19 @@
 package com.richardeh.blocdrop;
 
+import com.badlogic.gdx.math.Vector2;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Board {
 
-	private ArrayList<ArrayList<Integer>> board;
+	private ArrayList<ArrayList<Integer>> board, previousBoard;
 	private static final int BOARD_WIDTH = 10;
 	private static final int BOARD_HEIGHT= 15;
 	
 	public Board(){
 
-		board = new ArrayList<ArrayList<Integer>>();
+		board = previousBoard = new ArrayList<ArrayList<Integer>>();
 	}
 	
 	public void start(){
@@ -38,4 +40,12 @@ public class Board {
 	public int getPosition(int row, int col){
 		return board.get(row).get(col);
 	}
+
+    public void insertBlock(Block block){
+        for(Vector2 position:block.getCoords()){
+            board.get((int)position.x).set((int)position.y,block.getValue());
+        }
+    }
+
+
 }

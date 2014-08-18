@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Block extends DynamicGameObject{
 
-    private ArrayList<Vector2> coords;
+    private ArrayList<Vector2> coords, prevCoords;
 	public enum Shape{
 		L,
 		T,
@@ -32,20 +32,15 @@ public class Block extends DynamicGameObject{
 	public Block(float x, float y, float width, float height, Shape shape){
 		super(x,y,width,height);
         this.shape = shape;
-        coords = setStartCoords();
+        coords = prevCoords = setStartCoords();
         orientation = Orientation.One;
 	}
-	
-	public int getValue() {
-		return value;
-	}
-	public void setValue(int value) {
-		this.value = value;
-	}
+
 
     private ArrayList<Vector2> setStartCoords(){
 
-        ArrayList<Vector2> coords = new ArrayList<Vector2>();
+        coords = new ArrayList<Vector2>();
+        prevCoords = new ArrayList<Vector2>();
         Vector2 point = new Vector2(0,0);
         switch (shape){
             case I:
@@ -96,18 +91,22 @@ public class Block extends DynamicGameObject{
     }
 
     public void moveDown(){
+        prevCoords = coords;
     	for(Vector2 v:coords){
     		v.x-=1;
     	}
     }
 
     public void moveRight(){
+
+        prevCoords = coords;
     	for(Vector2 v:coords){
     		v.y+=1;
     	}
     }
     
     public void moveLeft(){
+        prevCoords = coords;
     	for(Vector2 v:coords){
     		v.y-=1;
     	}
@@ -115,6 +114,7 @@ public class Block extends DynamicGameObject{
        
     public void rotate(){
         float x,y;
+        prevCoords = coords;
 
     	x = coords.get(0).x;
     	y = coords.get(0).y;
@@ -261,5 +261,23 @@ public class Block extends DynamicGameObject{
                 }
                 break;
         }
+    }
+
+    public void undo(){
+        coords = prevCoords;
+    }
+    public int getValue() {
+        return value;
+    }
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public ArrayList<Vector2> getCoords(){
+        return coords;
+    }
+
+    public ArrayList<Vector2> getPrevCoords(){
+        return prevCoords;
     }
 }
