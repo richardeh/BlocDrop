@@ -27,11 +27,10 @@ public class Game implements GestureListener, InputProcessor {
         isOver = isPaused = false;
         currentBlock = randomBlock();
 		nextBlock = randomBlock();
-		updateGame();
 	}
 	
-	public void updateGame(){
-		if(isPlaying()){
+	public void updateGame(float delta){
+		if(isPlaying()&& delta>=1){
 			// Game Loop
 
 			if(!tryMoveDown()){

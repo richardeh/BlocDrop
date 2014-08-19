@@ -18,6 +18,8 @@ public class blocdrop implements ApplicationListener {
 	private Sprite blueSprite, redSprite, greenSprite, orangeSprite,yellowSprite;
 	private Board board;
 	Game game;
+    private float deltaTime, ticks;
+    public int speed;
 	
 	@Override
 	public void create() {		
@@ -35,13 +37,15 @@ public class blocdrop implements ApplicationListener {
 		greenSprite = new Sprite(Assets.greenRegion);
 		orangeSprite = new Sprite(Assets.orangeRegion);
 		yellowSprite = new Sprite(Assets.yellowRegion);
-		
+		deltaTime = System.currentTimeMillis();
+        ticks = 0;
+        speed = 1;
 	}
 
 	@Override
 	public void dispose() {
 		batch.dispose();
-		
+        Assets.dispose();
 	}
 
 	@Override
@@ -49,8 +53,7 @@ public class blocdrop implements ApplicationListener {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		ArrayList<ArrayList<Integer>> currentBoard = game.getBoard().getBoard();
-		
-		
+
 		for(int x=0;x<currentBoard.size();x++){
 			for(int y=0;y<currentBoard.get(x).size();y++){
 				batch.begin();
@@ -84,7 +87,12 @@ public class blocdrop implements ApplicationListener {
 			}
 		}
 		// TODO: slow the game down
-		game.updateGame();
+        ticks += System.currentTimeMillis()-deltaTime;
+		if(ticks>1*speed){
+            // This should only be called once a full second has elapsed
+            game.updateGame(ticks);
+            ticks = 0;
+        }
 		System.out.println(currentBoard.get(0).get(0));
 
 	}

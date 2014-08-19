@@ -42,4 +42,14 @@ public class Assets {
 	public static void playSound(Sound sound){
 		sound.play(1);
 	}
+
+    public static void dispose(){
+        redSquare.dispose();
+        blueSquare.dispose();
+        greenSquare.dispose();
+        yellowSquare.dispose();
+        orangeSquare.dispose();
+        music.dispose();
+        rowClearSound.dispose();
+    }
 }
