@@ -27,8 +27,11 @@ public class Game implements GestureListener, InputProcessor {
         isOver = isPaused = false;
         currentBlock = randomBlock();
 		nextBlock = randomBlock();
-
-		while(isPlaying()){
+		updateGame();
+	}
+	
+	public void updateGame(){
+		if(isPlaying()){
 			// Game Loop
 
 			if(!tryMoveDown()){
@@ -57,8 +60,6 @@ public class Game implements GestureListener, InputProcessor {
                 }
             }
 		}
-		
-		
 	}
 	
 	private Block randomBlock(){
@@ -110,6 +111,15 @@ public class Game implements GestureListener, InputProcessor {
     }
 
     private boolean tryMoveDown(){
+    	// TODO: clean this up. should check first to make sure we're not about to go out of bounds
+    	// then make sure we're not about to move into another block
+    	// then if we're not going to hit a snag, move down and update the board
+    	
+    	for(Vector2 pos:currentBlock.getCoords()){
+    		if(pos.x <=1){
+    			return false;
+    		}
+    	}
         currentBlock.moveDown();
         for(Vector2 pos:currentBlock.getCoords()){
 
@@ -122,6 +132,14 @@ public class Game implements GestureListener, InputProcessor {
                 }
             }
 
+        }
+        
+        for(Vector2 prevPos:currentBlock.getPrevCoords()){
+        	board.updateBoard((int)prevPos.x, (int)prevPos.y, 0);
+        }
+        
+        for(Vector2 pos:currentBlock.getCoords()){
+        	board.updateBoard((int)pos.x, (int)pos.y, currentBlock.getValue());
         }
         hasMoved = true;
         return true;
@@ -221,5 +239,9 @@ public class Game implements GestureListener, InputProcessor {
     @Override
     public boolean scrolled(int i) {
         return false;
+    }
+    
+    public Board getBoard(){
+    	return board;
     }
 }

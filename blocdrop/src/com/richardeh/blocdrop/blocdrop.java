@@ -17,6 +17,7 @@ public class blocdrop implements ApplicationListener {
 	private SpriteBatch batch;
 	private Sprite blueSprite, redSprite, greenSprite, orangeSprite,yellowSprite;
 	private Board board;
+	Game game;
 	
 	@Override
 	public void create() {		
@@ -27,14 +28,7 @@ public class blocdrop implements ApplicationListener {
 		batch = new SpriteBatch();
 		board = new Board();
 		board.start();
-		for(ArrayList<Integer> row:board.getBoard()){
-			for(int i:row){
-				System.out.print(i+" ");
-			}
-			System.out.println();
-		}
-		System.out.println(board.getBoard().size());
-		System.out.println(board.getBoard().get(0).size());
+		game = new Game(board);
 		
 		blueSprite = new Sprite(Assets.blueRegion);
 		redSprite = new Sprite(Assets.redRegion);
@@ -54,7 +48,7 @@ public class blocdrop implements ApplicationListener {
 	public void render() {		
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		ArrayList<ArrayList<Integer>> currentBoard = board.getBoard();
+		ArrayList<ArrayList<Integer>> currentBoard = game.getBoard().getBoard();
 		
 		
 		for(int x=0;x<currentBoard.size();x++){
@@ -89,8 +83,10 @@ public class blocdrop implements ApplicationListener {
 				batch.end();
 			}
 		}
-		
-		
+		// TODO: slow the game down
+		game.updateGame();
+		System.out.println(currentBoard.get(0).get(0));
+
 	}
 
 	@Override
