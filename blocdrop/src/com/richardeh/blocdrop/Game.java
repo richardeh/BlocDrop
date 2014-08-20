@@ -114,12 +114,10 @@ public class Game implements GestureListener, InputProcessor {
     	// then make sure we're not about to move into another block
     	// then if we're not going to hit a snag, move down and update the board
     	
-    	for(Vector2 pos:currentBlock.getCoords()){
-    		if(pos.x <=1){
-    			return false;
-    		}
-    	}
-        currentBlock.moveDown();
+    	if(!currentBlock.moveDown()){
+            return false;
+        };
+
         for(Vector2 pos:currentBlock.getCoords()){
 
             for(Vector2 prevPos:currentBlock.getPrevCoords()){
@@ -137,9 +135,7 @@ public class Game implements GestureListener, InputProcessor {
         	board.updateBoard((int)prevPos.x, (int)prevPos.y, 0);
         }
         
-        for(Vector2 pos:currentBlock.getCoords()){
-        	board.updateBoard((int)pos.x, (int)pos.y, currentBlock.getValue());
-        }
+        board.insertBlock(currentBlock);
         hasMoved = true;
         return true;
     }
