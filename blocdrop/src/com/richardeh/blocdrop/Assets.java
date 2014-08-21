@@ -19,8 +19,8 @@ public class Assets {
 	public static Texture pause;
 	public static TextureRegion pauseRegion;
 	
-	public static Texture redSquare, blueSquare, greenSquare, orangeSquare, yellowSquare;
-	public static TextureRegion redRegion, blueRegion, greenRegion, orangeRegion, yellowRegion;
+	public static Texture redSquare, blueSquare, greenSquare, orangeSquare, yellowSquare, whiteSquare;
+	public static TextureRegion redRegion, blueRegion, greenRegion, orangeRegion, yellowRegion, whiteRegion;
 	
 	public static Music music;
 	public static Sound rowClearSound;
@@ -31,12 +31,14 @@ public class Assets {
 		orangeSquare = new Texture(Gdx.files.internal("orange.png"));
 		greenSquare = new Texture(Gdx.files.internal("green.png"));
 		yellowSquare = new Texture(Gdx.files.internal("yellow.png"));
+		whiteSquare = new Texture(Gdx.files.internal("white.png"));
 		
-		redRegion = new TextureRegion(redSquare, 0, 0, 32,32);
-		blueRegion = new TextureRegion(blueSquare, 0, 0, 32,32);
-		orangeRegion = new TextureRegion(orangeSquare, 0, 0, 32,32);
-		greenRegion = new TextureRegion(greenSquare, 0, 0, 32,32);
-		yellowRegion = new TextureRegion(yellowSquare, 0, 0, 32,32);
+		redRegion = new TextureRegion(redSquare, 0, 0, 32, 32);
+		blueRegion = new TextureRegion(blueSquare, 0, 0, 32, 32);
+		orangeRegion = new TextureRegion(orangeSquare, 0, 0, 32, 32);
+		greenRegion = new TextureRegion(greenSquare, 0, 0, 32, 32);
+		yellowRegion = new TextureRegion(yellowSquare, 0, 0, 32, 32);
+		whiteRegion = new TextureRegion(whiteSquare, 0, 0, 32, 32);
 	}
 	
 	public static void playSound(Sound sound){

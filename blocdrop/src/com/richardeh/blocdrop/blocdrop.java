@@ -15,7 +15,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class blocdrop implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-	private Sprite blueSprite, redSprite, greenSprite, orangeSprite,yellowSprite;
+	private Sprite blueSprite, redSprite, greenSprite, orangeSprite,yellowSprite, whiteSprite;
 	private Board board;
 	Game game;
     private float deltaTime, ticks;
@@ -32,6 +32,7 @@ public class blocdrop implements ApplicationListener {
 		board.start();
 		game = new Game(board);
 		
+		whiteSprite = new Sprite(Assets.whiteRegion);
 		blueSprite = new Sprite(Assets.blueRegion);
 		redSprite = new Sprite(Assets.redRegion);
 		greenSprite = new Sprite(Assets.greenRegion);
@@ -59,6 +60,8 @@ public class blocdrop implements ApplicationListener {
 				batch.begin();
 				switch(currentBoard.get(x).get(y)){
 					case 0:
+						whiteSprite.setPosition(32*y, 32*x);
+						whiteSprite.draw(batch);
 						break;
 					case 1:
 						blueSprite.setPosition(32*y, 32*x);

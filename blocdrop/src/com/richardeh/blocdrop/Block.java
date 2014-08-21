@@ -32,16 +32,16 @@ public class Block extends DynamicGameObject{
 	public Block(float x, float y, float width, float height, Shape shape, int value){
 		super(x,y,width,height);
         this.shape = shape;
-        coords = prevCoords = setStartCoords();
+        setStartCoords();
+        prevCoords = new ArrayList<Vector2>(coords.size());
         orientation = Orientation.One;
         this.value = value;
 	}
 
 
-    private ArrayList<Vector2> setStartCoords(){
+    private void setStartCoords(){
 
         coords = new ArrayList<Vector2>();
-        prevCoords = new ArrayList<Vector2>();
         switch (shape){
             case I:
                 for(int i=10;i<14;i++){
@@ -87,16 +87,20 @@ public class Block extends DynamicGameObject{
                 break;
         }
 
-        return coords;
+        return;
     }
 
     public boolean moveDown(){
-        prevCoords = coords;
+    	prevCoords.clear();
+    	
+    	for(Vector2 v:coords){
+    		prevCoords.add(v);
+    	}
+
     	for(Vector2 v:coords){
     		if(v.x >0){
-                v.x-=1;
+                coords.set(coords.indexOf(v), new Vector2(v.x-1, v.y));
             } else {
-                coords = prevCoords;
                 return false;
             }
     	}
@@ -105,14 +109,14 @@ public class Block extends DynamicGameObject{
 
     public void moveRight(){
 
-        prevCoords = coords;
+        prevCoords = getCoords();
     	for(Vector2 v:coords){
     		v.y+=1;
     	}
     }
     
     public void moveLeft(){
-        prevCoords = coords;
+        prevCoords = getCoords();
     	for(Vector2 v:coords){
     		v.y-=1;
     	}
@@ -321,7 +325,7 @@ public class Block extends DynamicGameObject{
     }
 
     public void undo(){
-        coords = prevCoords;
+        coords = getPrevCoords();
     }
     public int getValue() {
         return value;

@@ -119,7 +119,7 @@ public class Game implements GestureListener, InputProcessor {
         };
 
         for(Vector2 pos:currentBlock.getCoords()){
-
+        	// TODO: fix this, currently not allowing blocks to move down
             for(Vector2 prevPos:currentBlock.getPrevCoords()){
                 if(pos.x == prevPos.x && pos.y == prevPos.y){
                     continue;
@@ -130,12 +130,17 @@ public class Game implements GestureListener, InputProcessor {
             }
 
         }
-        
+                
         for(Vector2 prevPos:currentBlock.getPrevCoords()){
         	board.updateBoard((int)prevPos.x, (int)prevPos.y, 0);
+        	
         }
         
-        board.insertBlock(currentBlock);
+        for(Vector2 pos:currentBlock.getCoords()){
+        	board.updateBoard((int)pos.x, (int)pos.y, currentBlock.getValue());
+        }
+        
+        
         hasMoved = true;
         return true;
     }
