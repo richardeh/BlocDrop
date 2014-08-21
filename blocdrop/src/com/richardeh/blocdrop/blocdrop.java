@@ -84,17 +84,19 @@ public class blocdrop implements ApplicationListener {
 							break;
 				}
 				batch.end();
+				//System.out.print(currentBoard.get(x).get(y)+" ");
 			}
+			//System.out.println();
 		}
 		// TODO: slow the game down
         ticks += System.currentTimeMillis()-deltaTime;
-		if(ticks>1*speed){
+		if(ticks>=1*speed){
             // This should only be called once a full second has elapsed
             game.updateGame(ticks);
             ticks = 0;
+        } else{
+        	ticks +=0.1;
         }
-		System.out.println(currentBoard.get(0).get(0));
-
 	}
 
 	@Override

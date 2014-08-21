@@ -49,7 +49,7 @@ public class Assets {
         greenSquare.dispose();
         yellowSquare.dispose();
         orangeSquare.dispose();
-        music.dispose();
-        rowClearSound.dispose();
+        //music.dispose();
+        //rowClearSound.dispose();
     }
 }

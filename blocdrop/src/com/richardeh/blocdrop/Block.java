@@ -42,49 +42,48 @@ public class Block extends DynamicGameObject{
 
         coords = new ArrayList<Vector2>();
         prevCoords = new ArrayList<Vector2>();
-        Vector2 point = new Vector2(0,0);
         switch (shape){
             case I:
-                for(int i=14;i<18;i++){
-                    coords.add(point.set(i,5));
+                for(int i=10;i<14;i++){
+                    coords.add(new Vector2(i,5));
                 }
                 break;
             case J:
-                coords.add(point.set(14,4));
+                coords.add(new Vector2(14,4));
                 for(int i=14;i<17;i++){
-                    coords.add(point.set(i,5));
+                    coords.add(new Vector2(i,5));
                 }
                 break;
             case L:
-                coords.add(point.set(14,5));
+                coords.add(new Vector2(14,5));
                 for(int i=14;i<17;i++){
-                    coords.add(point.set(i,4));
+                    coords.add(new Vector2(i,4));
                 }
                 break;
             case O:
-                coords.add(point.set(14,4));
-                coords.add(point.set(14,5));
-                coords.add(point.set(15,4));
-                coords.add(point.set(15,5));
+                coords.add(new Vector2(14,4));
+                coords.add(new Vector2(14,5));
+                coords.add(new Vector2(15,4));
+                coords.add(new Vector2(15,5));
                 break;
             case T:
-                coords.add(point.set(14,5));
+                coords.add(new Vector2(14,5));
 
                 for(int i=4;i<7;i++){
-                    coords.add(point.set(15,i));
+                    coords.add(new Vector2(15,i));
                 }
                 break;
             case S:
-                coords.add(point.set(14,4));
-                coords.add(point.set(14,5));
-                coords.add(point.set(15,5));
-                coords.add(point.set(15,6));
+                coords.add(new Vector2(14,4));
+                coords.add(new Vector2(14,5));
+                coords.add(new Vector2(15,5));
+                coords.add(new Vector2(15,6));
                 break;
             case Z:
-                coords.add(point.set(14,5));
-                coords.add(point.set(14,4));
-                coords.add(point.set(15,4));
-                coords.add(point.set(15,3));
+                coords.add(new Vector2(14,5));
+                coords.add(new Vector2(14,4));
+                coords.add(new Vector2(15,4));
+                coords.add(new Vector2(15,3));
                 break;
         }
 
@@ -337,5 +336,9 @@ public class Block extends DynamicGameObject{
 
     public ArrayList<Vector2> getPrevCoords(){
         return prevCoords;
+    }
+    
+    public Shape getShape(){
+    	return shape;
     }
 }

@@ -3,7 +3,6 @@ package com.richardeh.blocdrop;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Board {
 
@@ -34,6 +33,7 @@ public class Board {
 	}
 	
 	public void updateBoard(int row, int col, int number){
+		previousBoard = board;
 		board.get(row).set(col,number);
 	}
 	
@@ -42,9 +42,14 @@ public class Board {
 	}
 
     public void insertBlock(Block block){
+    	previousBoard = board;
         for(Vector2 position:block.getCoords()){
             board.get((int)position.x).set((int)position.y,block.getValue());
         }
+    }
+    
+    public void undo(){
+    	board = previousBoard;
     }
 
 
