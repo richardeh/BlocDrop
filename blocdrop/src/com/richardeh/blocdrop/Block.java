@@ -124,42 +124,50 @@ public class Block extends DynamicGameObject{
 
     	x = this.coords.get(0).x;
     	y = this.coords.get(0).y;
+        coords.clear();
         switch(shape){
             case L:
                 // rotate L
                 switch(orientation){
                     case One:
-                        // 3
-                        // 2   -> 1 2 3
-                        // 1 0    0
-                        coords.set(1, new Vector2(x+1, y));
-                        coords.set(2, new Vector2(x+1, y+1));
-                        coords.set(3, new Vector2(x+1, y+2));
+                        // 3 x x    x x x
+                        // 2 x x -> 1 2 3
+                        // 1 0 x    0 x x
+                        coords.add(new Vector2(x,y-1));
+                        coords.add(new Vector2(x + 1, y-1));
+                        coords.add(new Vector2(x + 1, y));
+                        coords.add(new Vector2(x + 1, y + 1));
+                        this.orientation = Orientation.Two;
                    	break;
                     case Two:
-                        //         0 1
-                        // 1 2 3 ->  2
-                        // 0         3
-                        coords.set(0, new Vector2(x+2, y));
-                        coords.set(1, new Vector2(x+1, y+1));
-                        coords.set(3, new Vector2(x, y+1));
+                        // x x x     0 1 x
+                        // 1 2 3 ->  x 2 x
+                        // 0 x x     x 3 x
+                        coords.add(new Vector2(x + 2, y));
+                        coords.add(new Vector2(x + 2, y + 1));
+                        coords.add(new Vector2(x + 1, y + 1));
+                        coords.add(new Vector2(x, y+1));
+                        this.orientation = Orientation.Three;
                     	break;
                     case Three:
-                        // 0 1
-                        //   2  ->     0
-                        //   3     3 2 1
-                        coords.set(0, new Vector2(x, y+2));
-                        coords.set(1, new Vector2(x-1, y+2));
-                        coords.set(3, new Vector2(x-1, y));
+                        // 0 1 x    x x x
+                        // x 2 x -> x x 0
+                        // x 3 x    3 2 1
+                        coords.add(new Vector2(x-1, y+2));
+                        coords.add(new Vector2(x - 2, y + 2));
+                        coords.add(new Vector2(x-2,y+1));
+                        coords.add(new Vector2(x - 2, y));
+                        this.orientation = Orientation.Four;
                     	break;
                     case Four:
-                        //          3
-                        //     0 -> 2
-                        // 3 2 1    1 0
-                        coords.set(0, new Vector2(x-1, y));
-                        coords.set(1, coords.get(2));
-                        coords.set(2, new Vector2(x, y-1));
-                        coords.set(3, new Vector2(x+1, y-1));
+                        // x x x    3 x x
+                        // x x 0 -> 2 x x
+                        // 3 2 1    1 0 x
+                        coords.add(new Vector2(x - 1, y - 1));
+                        coords.add(new Vector2(x-1,y-2));
+                        coords.add(new Vector2(x, y - 2));
+                        coords.add(new Vector2(x + 1, y - 2));
+                        this.orientation = Orientation.One;
                         break;
                 }
                 break;
@@ -167,43 +175,51 @@ public class Block extends DynamicGameObject{
                 // rotate T
                 switch(orientation){
                     case One:
-                    	//              1
-                    	//  1 2 3 ->  0 2 
-                    	//    0         3
+                    	//  x x x     x 1 x
+                    	//  1 2 3 ->  0 2 x
+                    	//  x 0 x     x 3 x
                     	
-                    	coords.set(3,coords.get(0));
-                    	coords.set(0, coords.get(1));
-                    	coords.set(1, new Vector2(x, y+2));
+                    	coords.add(new Vector2(x+1,y-1));
+                    	coords.add(new Vector2(x+2,y));
+                    	coords.add(new Vector2(x + 1, y));
+                        coords.add(new Vector2(x,y));
+                        this.orientation = Orientation.Two;
                     	break;
                     	
                     case Two:
-                    	//   1        0
-                    	// 0 2  ->  3 2 1
-                    	//   3
-                    	
-                    	coords.set(0, coords.get(1));
-                    	coords.set(3, new Vector2(x, y));
-                    	coords.set(1, new Vector2(x+2,y));
+                    	// x 1 x     x 0 x
+                    	// 0 2 x ->  3 2 1
+                    	// x 3 x     x x x
+
+                        coords.add(new Vector2(x + 1, y + 1));
+                        coords.add(new Vector2(x, y + 2));
+                        coords.add(new Vector2(x, y+1));
+                        coords.add(new Vector2(x, y));
+                        this.orientation = Orientation.Three;
                     	break;
                     	
                     case Three:
-                    	//   0      3
-                    	// 3 2 1 -> 2 0
-                    	//          1
-                    	
-                    	coords.set(3,coords.get(0));
-                    	coords.set(0, coords.get(1));
-                    	coords.set(1, new Vector2(x, y-2));
+                    	// x 0 x    3 x x
+                    	// 3 2 1 -> 2 0 x
+                    	// x x x    1 x x
+
+                        coords.add(new Vector2(x - 1, y));
+                        coords.add(new Vector2(x - 2, y - 1));
+                        coords.add(new Vector2(x - 1, y-1));
+                        coords.add(new Vector2(x, y - 1));
+                        this.orientation = Orientation.Four;
                     	break;
                     	
                     case Four:
-                    	// 3
-                    	// 2 0 -> 1 2 3
-                    	// 1        0
-                    	
-                    	coords.set(3, coords.get(0));
-                    	coords.set(0, coords.get(1));
-                    	coords.set(1, new Vector2(x-2,y));
+                    	// 3 x x    x x x
+                    	// 2 0 x -> 1 2 3
+                    	// 1 x x    x 0 x
+
+                        coords.add(new Vector2(x - 1, y));
+                        coords.add(new Vector2(x, y - 1));
+                        coords.add(new Vector2(x , y));
+                        coords.add(new Vector2(x, y + 1));
+                        this.orientation = Orientation.One;
                         break;
                 }
                 break;
@@ -211,38 +227,45 @@ public class Block extends DynamicGameObject{
                 // rotate J
                 switch(orientation){
                     case One:
-                        //    3
-                        //    2 -> 0
-                        //  0 1    1 2 3
-                        coords.set(0,coords.get(2));
-                        coords.set(2,new Vector2(x+2,y));
-                        coords.set(3,new Vector2(x+3,y));
+                        //  x 3 x    x x x
+                        //  x 2 x -> 0 x x
+                        //  0 1 x    1 2 3
+                        coords.add(new Vector2(x + 1, y));
+                        coords.add(new Vector2(x, y));
+                        coords.add(new Vector2(x, y + 1));
+                        coords.add(new Vector2(x, y + 2));
+
+                        this.orientation = Orientation.Two;
                     	break;
                     case Two:
-                        //          1 0
-                        // 0     -> 2
-                        // 1 2 3    3
-                        coords.set(2,coords.get(0));
-                        coords.set(3, coords.get(1));
-                        coords.set(0, new Vector2(x+1,y+1));
-                        coords.set(1, new Vector2(x, y+1));
+                        // x x x    1 0 x
+                        // 0 x x -> 2 x x
+                        // 1 2 3    3 x x
+                        coords.add(new Vector2(x+1,y+1));
+                        coords.add(new Vector2(x+1,y));
+                        coords.add(new Vector2(x, y));
+                        coords.add(new Vector2(x - 1, y));
+                        this.orientation = Orientation.Three;
                     	break;
                     case Three:
-                        // 1 0
-                        // 2   -> 3 2 1
-                        // 3          0
-                        coords.set(0, new Vector2(x-2, y));
-                        coords.set(1, new Vector2(x-1, y));
-                        coords.set(3, new Vector2(x-1, y-2));
+                        // 1 0 x     x x x
+                        // 2 x x  -> 3 2 1
+                        // 3 x x     x x 0
+                        coords.add(new Vector2(x-2, y+1));
+                        coords.add(new Vector2(x - 1, y + 1));
+                        coords.add(new Vector2(x - 1, y));
+                        coords.add(new Vector2(x - 1, y - 1));
+                        this.orientation = Orientation.Four;
                     	break;
                     case Four:
-                        //            3
-                        // 3 2 1 ->   2
-                        //     0    0 1
-                        coords.set(2, coords.get(1));
-                        coords.set(1, coords.get(0));
-                        coords.set(0, new Vector2(x, y-1));
-                        coords.set(3, new Vector2(x+2, y));
+                        // x x x    x 3 x
+                        // 3 2 1 -> x 2 x
+                        // x x 0    0 1 x
+                        coords.add(new Vector2(x,y-2));
+                        coords.add(new Vector2(x,y-1));
+                        coords.add(new Vector2(x + 1, y - 1));
+                        coords.add(new Vector2(x + 2, y - 1));
+                        this.orientation = Orientation.One;
                         break;
                 }
                 break;
@@ -250,22 +273,25 @@ public class Block extends DynamicGameObject{
                 // rotate Z
                 switch(orientation){
                     case One:
-                    	//              3  
-                    	//  3 2   ->  1 2
-                    	//    1 0     0
-                    	
-                    	coords.set(1, new Vector2(x,y+1));
-                    	coords.set(2, new Vector2(x+1, y+1));
-                    	coords.set(3, new Vector2(x+1, y+2));
+                    	//  x x x     x 3 x
+                    	//  3 2 x  -> 1 2 x
+                    	//  x 1 0     0 x x
+                    	coords.add(new Vector2(x, y - 2));
+                    	coords.add(new Vector2(x + 1, y - 2));
+                    	coords.add(new Vector2(x + 1, y - 1));
+                        coords.add(new Vector2(x + 2, y - 1));
+                        this.orientation = Orientation.Two;
                     	break;
                     case Two:
-                    	//    3          
-                    	//  1 2   ->  3 2
-                    	//  0           1 0
+                    	//  x 3 x      x x x
+                    	//  1 2 x  ->  3 2 x
+                    	//  0 x x      x 1 0
                     	
-                    	coords.set(1, new Vector2(x-1,y));
-                    	coords.set(2, new Vector2(x-1, y+1));
-                    	coords.set(3, new Vector2(x-2, y+1));
+                    	coords.add(new Vector2(x, y + 2));
+                    	coords.add(new Vector2(x, y + 1));
+                    	coords.add(new Vector2(x+1, y+1));
+                        coords.add(new Vector2(x + 1, y));
+                        this.orientation = Orientation.One;
                         break;
                 }
                 break;
@@ -273,22 +299,26 @@ public class Block extends DynamicGameObject{
                 // rotate S
                 switch(orientation){
                     case One:
-                    	//            3  
-                    	//    2 3 ->  2 1
-                    	//  0 1         0
+                    	//  x x x     3 x x
+                    	//  x 2 3 ->  2 1 x
+                    	//  0 1 x     x 0 x
                     	
-                    	coords.set(1, new Vector2(x,y+1));
-                    	coords.set(2, new Vector2(x-1,y+1));
-                    	coords.set(3, new Vector2(x-1,y+2));
+                    	coords.add(new Vector2(x, y + 1));
+                    	coords.add(new Vector2(x + 1, y + 1));
+                    	coords.add(new Vector2(x + 1,y));
+                        coords.add(new Vector2(x + 2,y));
+                        this.orientation = Orientation.Two;
                     	break;
                     case Two:
-                    	// 3
-                    	// 2 1 ->    2  3
-                    	//   0    0  1
+                    	// 3 x x   x x x
+                    	// 2 1 x-> x 2 3
+                    	// x 0 x   0 1 x
                     	
-                    	coords.set(1, new Vector2(x+1, y));
-                    	coords.set(2, new Vector2(x+1,y+1));
-                    	coords.set(3, new Vector2(x+1,y+2));
+                    	coords.add(new Vector2(x, y-1));
+                    	coords.add(new Vector2(x, y));
+                    	coords.add(new Vector2(x+1,y));
+                        coords.add(new Vector2(x+1,y+1));
+                        this.orientation = Orientation.One;
                         break;
                 }
                 break;
@@ -296,14 +326,16 @@ public class Block extends DynamicGameObject{
                 // rotate I
                 switch(orientation){
                     case One:
-                    	// 3
-                    	// 2
-                    	// 1
-                        // 0  -> 0 1 2 3
+                    	// 3 x x x     x x x x
+                    	// 2 x x x     x x x x
+                    	// 1 x x x     x x x x
+                        // 0 x x x  -> 0 1 2 3
 
-                        for(Vector2 v:coords){
-                            v.set(x,y+coords.indexOf(v));
+                        for(int i=(int)y;i<y+4;i++){
+                            coords.add(new Vector2(x, i));
                         }
+
+                        this.orientation = Orientation.Two;
                         break;
                     case Two:
                     	//             3
@@ -311,9 +343,10 @@ public class Block extends DynamicGameObject{
                     	//             1
                         // 0 1 2 3  -> 0
 
-                        for(Vector2 v:coords){
-                            v.set(x+coords.indexOf(v),y);
+                        for(int i=(int)x;i<x+4;i++){
+                            coords.add(new Vector2(i, y));
                         }
+                        this.orientation = Orientation.One;
                         break;
                 }
                 break;
