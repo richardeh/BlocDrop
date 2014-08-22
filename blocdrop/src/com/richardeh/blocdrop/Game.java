@@ -1,12 +1,14 @@
 package com.richardeh.blocdrop;
 
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.input.GestureDetector.GestureListener;
-import com.badlogic.gdx.math.Vector2;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.input.GestureDetector.GestureListener;
+import com.badlogic.gdx.math.Vector2;
 
 public class Game implements GestureListener, InputProcessor {
 
@@ -27,6 +29,9 @@ public class Game implements GestureListener, InputProcessor {
         isOver = isPaused = false;
         currentBlock = randomBlock();
 		nextBlock = randomBlock();
+
+		Gdx.input.setInputProcessor(this);
+		
 	}
 	
 	public void updateGame(float delta){
@@ -120,13 +125,9 @@ public class Game implements GestureListener, InputProcessor {
 
         for(Vector2 pos:currentBlock.getCoords()){
         	// TODO: fix this, currently not allowing blocks to move down
+        	//System.out.println("curr x: "+pos.x+" y: "+pos.y);
             for(Vector2 prevPos:currentBlock.getPrevCoords()){
-                if(pos.x == prevPos.x && pos.y == prevPos.y){
-                    continue;
-                } else if(board.getPosition((int)pos.x,(int)pos.y)!=0){
-                    currentBlock.undo();
-                    return false;
-                }
+                //System.out.println("prev x: "+prevPos.x+" y: "+prevPos.y);
             }
 
         }
@@ -208,6 +209,8 @@ public class Game implements GestureListener, InputProcessor {
     public boolean keyUp(int i) {
         // TODO: fill in event handling here to rotate, move, and drop pieces
 
+    	if(i == Keys.SPACE) isPaused = !isPaused;
+    	if(i == Keys.UP) currentBlock.rotate();
         return false;
     }
 

@@ -91,11 +91,7 @@ public class Block extends DynamicGameObject{
     }
 
     public boolean moveDown(){
-    	prevCoords.clear();
-    	
-    	for(Vector2 v:coords){
-    		prevCoords.add(v);
-    	}
+    	copyCoords();
 
     	for(Vector2 v:coords){
     		if(v.x >0){
@@ -109,14 +105,14 @@ public class Block extends DynamicGameObject{
 
     public void moveRight(){
 
-        prevCoords = getCoords();
+    	copyCoords();
     	for(Vector2 v:coords){
     		v.y+=1;
     	}
     }
     
     public void moveLeft(){
-        prevCoords = getCoords();
+    	copyCoords();
     	for(Vector2 v:coords){
     		v.y-=1;
     	}
@@ -124,10 +120,10 @@ public class Block extends DynamicGameObject{
        
     public void rotate(){
         float x,y;
-        prevCoords = coords;
+        copyCoords();
 
-    	x = coords.get(0).x;
-    	y = coords.get(0).y;
+    	x = this.coords.get(0).x;
+    	y = this.coords.get(0).y;
         switch(shape){
             case L:
                 // rotate L
@@ -344,5 +340,13 @@ public class Block extends DynamicGameObject{
     
     public Shape getShape(){
     	return shape;
+    }
+    
+    private void copyCoords(){
+    	prevCoords.clear();
+    	
+    	for(Vector2 v:coords){
+    		prevCoords.add(v);
+    	}
     }
 }

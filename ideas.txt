@@ -39,3 +39,14 @@
 	allow player to move blocks left and right
 	allow player to pause the game
 	allow player to speed up the downward motion of a block
+
+[update 1 8/21/2014]
+-basic graphics are working. 
+-blocks are creating and drawing, but not moving down. need to fix the code to check what's below to get them to drop. 
+-move down code works, just not when the checks are in place.
+-need to fill in code to scan rows and score, and to gameover.
+-need to build on controls
+
+want to do:
+- expand the graphics to include the scoreboard and the next piece in a frame
+- modify the speed every ten scored rows so that blocks move faster
