@@ -1,6 +1,5 @@
 /Tetris_UI.tmx
 /blue.png
-/com/
 /data/
 /green.png
 /kenpixel.ttf
@@ -11,5 +10,6 @@
 /rightButton.png
 /rotate.png
 /soundOn.png
-/yellow.png
 /white.png
+/yellow.png
+/com/

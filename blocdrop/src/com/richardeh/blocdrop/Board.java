@@ -48,8 +48,18 @@ public class Board {
         }
     }
     
+    public void removeBlock(Block block){
+    	previousBoard = board;
+    	for(Vector2 position:block.getCoords()){
+    		board.get((int)position.x).set((int)position.y,0);
+    	}
+    }
     public void undo(){
     	board = previousBoard;
+    }
+    
+    public int getWidth(){
+    	return BOARD_WIDTH;
     }
 
 

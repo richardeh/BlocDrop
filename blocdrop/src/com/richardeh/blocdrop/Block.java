@@ -33,7 +33,7 @@ public class Block extends DynamicGameObject{
 		super(x,y,width,height);
         this.shape = shape;
         setStartCoords();
-        prevCoords = new ArrayList<Vector2>(coords.size());
+        prevCoords = new ArrayList<Vector2>();
         orientation = Orientation.One;
         this.value = value;
 	}
@@ -107,14 +107,15 @@ public class Block extends DynamicGameObject{
 
     	copyCoords();
     	for(Vector2 v:coords){
-    		v.y+=1;
+    		coords.set(coords.indexOf(v), new Vector2(v.x, v.y+1));
     	}
     }
     
     public void moveLeft(){
     	copyCoords();
+    	
     	for(Vector2 v:coords){
-    		v.y-=1;
+ 			coords.set(coords.indexOf(v), new Vector2(v.x, v.y-1));
     	}
     }
        
@@ -297,6 +298,12 @@ public class Block extends DynamicGameObject{
                         coords.add(new Vector2(x + 1, y));
                         this.orientation = Orientation.One;
                         break;
+				case Four:
+					break;
+				case Three:
+					break;
+				default:
+					break;
                 }
                 break;
             case S:
@@ -324,6 +331,12 @@ public class Block extends DynamicGameObject{
                         coords.add(new Vector2(x+1,y+1));
                         this.orientation = Orientation.One;
                         break;
+				case Four:
+					break;
+				case Three:
+					break;
+				default:
+					break;
                 }
                 break;
             case I:
@@ -352,6 +365,12 @@ public class Block extends DynamicGameObject{
                         }
                         this.orientation = Orientation.One;
                         break;
+				case Four:
+					break;
+				case Three:
+					break;
+				default:
+					break;
                 }
                 break;
         }
