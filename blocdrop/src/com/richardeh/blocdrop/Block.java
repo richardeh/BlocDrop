@@ -126,6 +126,10 @@ public class Block extends DynamicGameObject{
     	y = this.coords.get(0).y;
         coords.clear();
         switch(shape){
+        	case O:
+        		// rotate O
+        		break;
+        	
             case L:
                 // rotate L
                 switch(orientation){
