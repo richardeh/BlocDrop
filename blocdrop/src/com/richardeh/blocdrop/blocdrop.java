@@ -92,7 +92,7 @@ public class blocdrop implements ApplicationListener {
 		
         ticks += System.currentTimeMillis()-deltaTime;
 		if(ticks>=1*speed){
-            game.updateGame(ticks);
+            game.updateGame();
             ticks = 0;
         } else{
         	ticks +=0.1;

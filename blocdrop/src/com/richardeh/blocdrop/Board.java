@@ -58,8 +58,9 @@ public class Board {
 
     public void deleteRow(int row){
     	previousBoard = board;
-    	board.remove(row);
-    	addRow();
+    	for(int i=row;i<BOARD_HEIGHT-1;i++){
+    		board.set(i,board.get(i+1));
+    	}
     }
     
     private void addRow(){

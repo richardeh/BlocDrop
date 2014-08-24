@@ -11,6 +11,8 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Sort;
+import com.badlogic.gdx.utils.SortedIntList;
 
 public class Game implements GestureListener, InputProcessor {
 
@@ -42,9 +44,9 @@ public class Game implements GestureListener, InputProcessor {
 		Gdx.input.setInputProcessor(im);
 	}
 	
-	public void updateGame(float delta){
+	public void updateGame(){
 		List<Integer> rowsToScore = new ArrayList<Integer>();
-		if(isPlaying()&& delta>=1){
+		if(isPlaying()){
 			// Game Loop
 
 			if(!tryMoveDown()){
@@ -58,7 +60,8 @@ public class Game implements GestureListener, InputProcessor {
                     // update the score
                 	rowsToScore.clear();
                     for(Vector2 v:currentBlock.getCoords()){
-                        rowsToScore.add((int)v.x);
+                        if(!rowsToScore.contains((int)v.x))
+                        	rowsToScore.add((int)v.x);
                     }
                     updateScore(rowsToScore);
                     
@@ -173,7 +176,9 @@ public class Game implements GestureListener, InputProcessor {
 
     private void gameOver(){
         // TODO: method stub
+    	
         isOver = true;
+        System.out.println(score);
     }
 
     private int updateScore(List<Integer> rows){
@@ -191,8 +196,9 @@ public class Game implements GestureListener, InputProcessor {
     	}
     	
     	for(int row:rowsToDelete){
-    		board.deleteRow(row);
+    		board.deleteRow(row-rowsToDelete.indexOf(row));
     	}
+    	rowsToDelete.clear();
     	newScore = ROW_SCORE * scoreMultiplier;
     	score += newScore;
     	
