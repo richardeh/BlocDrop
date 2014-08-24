@@ -18,13 +18,7 @@ public class Board {
 	public void start(){
 
 		for(int i=0;i<BOARD_HEIGHT;i++){
-			ArrayList<Integer> row = new ArrayList<Integer>();
-			
-			for(int j=0;j<BOARD_WIDTH;j++){
-				row.add(j,0);
-			}
-			board.add(i,row);
-			
+			addRow();
 		}
 	}
 	
@@ -62,5 +56,19 @@ public class Board {
     	return BOARD_WIDTH;
     }
 
+    public void deleteRow(int row){
+    	previousBoard = board;
+    	board.remove(row);
+    	addRow();
+    }
+    
+    private void addRow(){
+    	ArrayList<Integer> row = new ArrayList<Integer>();
+		
+		for(int j=0;j<BOARD_WIDTH;j++){
+			row.add(j,0);
+		}
+		board.add(row);
+    }
 
 }

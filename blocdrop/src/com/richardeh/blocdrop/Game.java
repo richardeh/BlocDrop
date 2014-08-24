@@ -14,6 +14,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Game implements GestureListener, InputProcessor {
 
+	private static final int ROW_SCORE = 10;
 	public Board board;
 	public Block currentBlock;
 	public Block nextBlock;
@@ -21,17 +22,18 @@ public class Game implements GestureListener, InputProcessor {
 	private boolean hasMoved;
     private boolean isOver;
     private boolean isPaused;
-    private List<Integer> rowsToScore;
+    private int score;
+    
     InputMultiplexer im;
 
     Random rand = new Random();
 
 	public Game(Board board){
 		this.board = board;
-		rowsToScore = new ArrayList<Integer>();
         isOver = isPaused = false;
         currentBlock = randomBlock();
 		nextBlock = randomBlock();
+		score = 0;
 
 		im = new InputMultiplexer();
 		GestureDetector gd = new GestureDetector(this);
@@ -41,6 +43,7 @@ public class Game implements GestureListener, InputProcessor {
 	}
 	
 	public void updateGame(float delta){
+		List<Integer> rowsToScore = new ArrayList<Integer>();
 		if(isPlaying()&& delta>=1){
 			// Game Loop
 
@@ -53,10 +56,12 @@ public class Game implements GestureListener, InputProcessor {
                     // Block did move, but has now stopped
 
                     // update the score
+                	rowsToScore.clear();
                     for(Vector2 v:currentBlock.getCoords()){
                         rowsToScore.add((int)v.x);
                     }
-                    updateScoreAndBoard();
+                    updateScore(rowsToScore);
+                    
 
                     if(!canInsertNewPiece()) {
                         // the top is full, game is over
@@ -134,7 +139,6 @@ public class Game implements GestureListener, InputProcessor {
         newCoords = currentBlock.getCoords();
         oldCoords = currentBlock.getPrevCoords();
         
-        
         for(Vector2 pos:newCoords){
         	// If the new position is also in the old list, it doesn't need checked
         	if(oldCoords.contains(pos))
@@ -170,9 +174,27 @@ public class Game implements GestureListener, InputProcessor {
         isOver = true;
     }
 
-    private void updateScoreAndBoard(){
-        // TODO: check the rows the block stopped in to see if they are full
-        // if yes, update the score and move the rows above down
+    private int updateScore(List<Integer> rows){
+        // Checks to see if a row has filled, score it, and remove it
+    	int scoreMultiplier = 0;
+    	int newScore = 0;
+    	List<Integer> rowsToDelete = new ArrayList<Integer>();
+    	for(int row:rows){
+    		if(board.getBoard().get(row).contains(0)){
+    			continue;
+    		} else {
+    			scoreMultiplier++; 
+    			rowsToDelete.add(row);
+    		}
+    	}
+    	
+    	for(int row:rowsToDelete){
+    		board.deleteRow(row);
+    	}
+    	newScore = ROW_SCORE * scoreMultiplier;
+    	score += newScore;
+    	
+    	return newScore;
     }
 
     @Override
@@ -195,7 +217,6 @@ public class Game implements GestureListener, InputProcessor {
         // TODO: determine which direction is which when flinging
         // TODO: fill in moveRight and moveLeft as appropriate,
         //        and be sure to check for open spaces before rotating
-        // TODO: consider: fling up = rotate, fling down = drop to bottom?
     	if(vX>0){
     		// TODO: check to make sure the rotate won't cause an error
     		board.removeBlock(currentBlock);
@@ -250,20 +271,58 @@ public class Game implements GestureListener, InputProcessor {
     public boolean keyUp(int i) {
         // TODO: fill in event handling to drop pieces
 
+    	ArrayList<Vector2> oldCoords = new ArrayList<Vector2>();
+    	ArrayList<Vector2> newCoords = new ArrayList<Vector2>();
+    	ArrayList<Vector2> coordsToCheck = new ArrayList<Vector2>();
+    	
     	if(i == Keys.SPACE) isPaused = !isPaused;
     	if(i == Keys.UP) {
     		// TODO: check to make sure the rotate won't cause an error
     		board.removeBlock(currentBlock);
     		currentBlock.rotate();
+    		newCoords = currentBlock.getCoords();
+    		oldCoords = currentBlock.getPrevCoords();
+    		for(Vector2 pos:newCoords){
+            	// If the new position is also in the old list, it doesn't need checked
+            	if(oldCoords.contains(pos))
+            		continue;
+            	else
+            		coordsToCheck.add(pos);
+            }
+            
+            for(Vector2 pos: coordsToCheck){
+            	// if any of the positions are occupied, we don't move down
+            	if(board.getPosition((int)pos.x, (int)pos.y)!=0){
+            		currentBlock.undo();
+            	}
+            }
     		board.insertBlock(currentBlock);
     	}
     	if(i == Keys.RIGHT) {
-    		// TODO: add check to make sure the space isn't occupied
     		for(Vector2 v:currentBlock.getCoords()){
         		if (v.y==board.getWidth()-1) return false;
+        		
         	}
+    		
     		board.removeBlock(currentBlock);
+    		
     		currentBlock.moveRight();
+    		newCoords = currentBlock.getCoords();
+    		oldCoords = currentBlock.getPrevCoords();
+    		for(Vector2 pos:newCoords){
+            	// If the new position is also in the old list, it doesn't need checked
+            	if(oldCoords.contains(pos))
+            		continue;
+            	else
+            		coordsToCheck.add(pos);
+            }
+            
+            for(Vector2 pos: coordsToCheck){
+            	// if any of the positions are occupied, we don't move down
+            	if(board.getPosition((int)pos.x, (int)pos.y)!=0){
+            		currentBlock.undo();
+            	}
+            }
     		board.insertBlock(currentBlock);
     	}
     	if(i == Keys.LEFT) {
@@ -274,6 +333,22 @@ public class Game implements GestureListener, InputProcessor {
         	}
     		board.removeBlock(currentBlock);
     		currentBlock.moveLeft();
+    		newCoords = currentBlock.getCoords();
+    		oldCoords = currentBlock.getPrevCoords();
+    		for(Vector2 pos:newCoords){
+            	// If the new position is also in the old list, it doesn't need checked
+            	if(oldCoords.contains(pos))
+            		continue;
+            	else
+            		coordsToCheck.add(pos);
+            }
+            
+            for(Vector2 pos: coordsToCheck){
+            	// if any of the positions are occupied, we don't move down
+            	if(board.getPosition((int)pos.x, (int)pos.y)!=0){
+            		currentBlock.undo();
+            	}
+            }
     		board.insertBlock(currentBlock);
     	}
         return false;

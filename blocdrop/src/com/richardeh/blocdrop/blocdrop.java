@@ -40,7 +40,7 @@ public class blocdrop implements ApplicationListener {
 		yellowSprite = new Sprite(Assets.yellowRegion);
 		deltaTime = System.currentTimeMillis();
         ticks = 0;
-        speed = 1;
+        speed = 2;
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class blocdrop implements ApplicationListener {
 				batch.end();
 			}
 		}
-		// TODO: slow the game down
+		
         ticks += System.currentTimeMillis()-deltaTime;
 		if(ticks>=1*speed){
             // This should only be called once a full second has elapsed
