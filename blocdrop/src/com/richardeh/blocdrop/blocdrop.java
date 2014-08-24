@@ -92,7 +92,6 @@ public class blocdrop implements ApplicationListener {
 		
         ticks += System.currentTimeMillis()-deltaTime;
 		if(ticks>=1*speed){
-            // This should only be called once a full second has elapsed
             game.updateGame(ticks);
             ticks = 0;
         } else{
