@@ -50,3 +50,13 @@
 want to do:
 - expand the graphics to include the scoreboard and the next piece in a frame
 - modify the speed every ten scored rows so that blocks move faster
+
+[update 2 8/24/2014]
+- blocks create, draw, move down and to the sides, and rotate. need to fix rotation when too close to the edge.
+- scoring code is in place but buggy, sometimes deletes too many rows, sometimes causes an error.
+  	need more testing to identify cause and fix.
+- keyboard controls are implemented, gesture detector is in place but needs testing and tuning.
+- android- graphics do not fill the screen, instead are set to hard pixel #'s. need to expand.
+
+wants:
+- same as before, graphics to include a scoreboard and next piece, as well as regular speed increases
