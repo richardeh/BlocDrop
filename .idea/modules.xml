@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/blocdrop/blocdrop.iml" filepath="$PROJECT_DIR$/blocdrop/blocdrop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blocdrop-android/blocdrop-android.iml" filepath="$PROJECT_DIR$/blocdrop-android/blocdrop-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blocdrop-desktop/blocdrop-desktop.iml" filepath="$PROJECT_DIR$/blocdrop-desktop/blocdrop-desktop.iml" />
+    </modules>
+  </component>
+</project>
+

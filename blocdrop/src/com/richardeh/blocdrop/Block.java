@@ -379,9 +379,11 @@ public class Block extends DynamicGameObject{
     public void undo(){
         coords = getPrevCoords();
     }
+
     public int getValue() {
         return value;
     }
+
     public void setValue(int value) {
         this.value = value;
     }
