@@ -13,8 +13,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class blocdrop implements ApplicationListener {
 	
-	private static final int VIRTUAL_WIDTH = 320;
-	private static final int VIRTUAL_HEIGHT = 480;
+	private static final int VIRTUAL_WIDTH = 480;
+	private static final int VIRTUAL_HEIGHT = 640;
 	private static final float ASPECT_RATIO = (float)VIRTUAL_WIDTH/(float)VIRTUAL_HEIGHT;
 	
 	private OrthographicCamera camera;

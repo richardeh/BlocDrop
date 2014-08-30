@@ -61,6 +61,8 @@ public class Board {
     	for(int i=row;i<BOARD_HEIGHT-1;i++){
     		board.set(i,board.get(i+1));
     	}
+    	board.remove(BOARD_HEIGHT-1);
+    	addRow();
     }
     
     private void addRow(){

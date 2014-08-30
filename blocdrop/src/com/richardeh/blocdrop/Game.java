@@ -156,7 +156,7 @@ public class Game implements GestureListener, InputProcessor {
 
     private boolean tryMoveDown(){
     	// Attempt to move a piece down the board
-    	
+
     	board.removeBlock(currentBlock);
     	if(!currentBlock.moveDown()) {
     		board.insertBlock(currentBlock);
