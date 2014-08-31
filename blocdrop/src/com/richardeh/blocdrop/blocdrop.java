@@ -47,6 +47,7 @@ public class blocdrop implements ApplicationListener {
 		deltaTime = System.currentTimeMillis();
         ticks = 0;
         speed = 2;
+        Assets.music.play();
 	}
 
 	@Override
@@ -131,9 +132,11 @@ public class blocdrop implements ApplicationListener {
 
 	@Override
 	public void pause() {
+		Assets.music.pause();
 	}
 
 	@Override
 	public void resume() {
+		Assets.music.play();
 	}
 }

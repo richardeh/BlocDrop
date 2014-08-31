@@ -1,6 +1,7 @@
 package com.richardeh.blocdrop;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.loaders.MusicLoader;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
@@ -39,6 +40,7 @@ public class Assets {
 		greenRegion = new TextureRegion(greenSquare, 0, 0, 32, 32);
 		yellowRegion = new TextureRegion(yellowSquare, 0, 0, 32, 32);
 		whiteRegion = new TextureRegion(whiteSquare, 0, 0, 32, 32);
+		music = Gdx.audio.newMusic(Gdx.files.internal("music.ogg"));
 	}
 	
 	public static void playSound(Sound sound){
@@ -51,7 +53,7 @@ public class Assets {
         greenSquare.dispose();
         yellowSquare.dispose();
         orangeSquare.dispose();
-        //music.dispose();
+        music.dispose();
         //rowClearSound.dispose();
     }
 }
