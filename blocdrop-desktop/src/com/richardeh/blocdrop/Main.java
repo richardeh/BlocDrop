@@ -7,8 +7,8 @@ public class Main {
 	public static void main(String[] args) {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "BlocDrop";
-		cfg.width = 32*10;
-		cfg.height = 32*15;
+		cfg.width = 640;
+		cfg.height = 800;
 		
 		new LwjglApplication(new blocdrop(), cfg);
 	}

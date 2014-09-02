@@ -13,8 +13,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class blocdrop implements ApplicationListener {
 	
-	private static final int VIRTUAL_WIDTH = 480;
-	private static final int VIRTUAL_HEIGHT = 640;
+	private static final int VIRTUAL_WIDTH = 640;
+	private static final int VIRTUAL_HEIGHT = 800;
 	private static final float ASPECT_RATIO = (float)VIRTUAL_WIDTH/(float)VIRTUAL_HEIGHT;
 	
 	private OrthographicCamera camera;
@@ -64,42 +64,43 @@ public class blocdrop implements ApplicationListener {
 		
 		camera.update();
 		ArrayList<ArrayList<Integer>> currentBoard = game.getBoard().getBoard();
-
+		batch.begin();
+		batch.draw(Assets.backgroundRegion,0,0);
 		for(int x=0;x<currentBoard.size();x++){
 			for(int y=0;y<currentBoard.get(x).size();y++){
-				batch.begin();
+				
 				switch(currentBoard.get(x).get(y)){
 					case 0:
-						whiteSprite.setPosition(32*y, 32*x);
+						whiteSprite.setPosition(32*y+64, 32*x+32);
 						whiteSprite.draw(batch);
 						break;
 					case 1:
-						blueSprite.setPosition(32*y, 32*x);
+						blueSprite.setPosition(32*y+64, 32*x+32);
 						blueSprite.draw(batch);
 						break;
 					case 2:
-						redSprite.setPosition(32*y, 32*x);
+						redSprite.setPosition(32*y+64, 32*x+32);
 						redSprite.draw(batch);
 						break;
 					case 3:
-						orangeSprite.setPosition(32*y,32*x);
+						orangeSprite.setPosition(32*y+64,32*x+32);
 						orangeSprite.draw(batch);
 						break;
 					case 4:
-						yellowSprite.setPosition(32*y,32*x);
+						yellowSprite.setPosition(32*y+64,32*x+32);
 						yellowSprite.draw(batch);
 						break;
 					case 5:
-						greenSprite.setPosition(32*y, 32*x);
+						greenSprite.setPosition(32*y+64, 32*x+32);
 						greenSprite.draw(batch);
 						break;
 						default:
 							break;
 				}
-				batch.end();
+				
 			}
 		}
-		
+		batch.end();
         ticks += System.currentTimeMillis()-deltaTime;
 		if(ticks>=1*speed){
             game.updateGame();

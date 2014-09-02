@@ -27,6 +27,7 @@ public class Assets {
 	public static Sound rowClearSound;
 	
 	public static void load(){
+		background = new Texture(Gdx.files.internal("background.png"));
 		redSquare = new Texture(Gdx.files.internal("red.png"));
 		blueSquare = new Texture(Gdx.files.internal("blue.png"));
 		orangeSquare = new Texture(Gdx.files.internal("orange.png"));
@@ -40,6 +41,7 @@ public class Assets {
 		greenRegion = new TextureRegion(greenSquare, 0, 0, 32, 32);
 		yellowRegion = new TextureRegion(yellowSquare, 0, 0, 32, 32);
 		whiteRegion = new TextureRegion(whiteSquare, 0, 0, 32, 32);
+		backgroundRegion = new TextureRegion(background, 0, 0, 640,800);
 		music = Gdx.audio.newMusic(Gdx.files.internal("music.ogg"));
 	}
 	
