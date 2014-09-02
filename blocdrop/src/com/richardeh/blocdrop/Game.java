@@ -222,9 +222,10 @@ public class Game implements GestureListener, InputProcessor {
 
     @Override
     public boolean fling(float vX, float vY, int i) {
-        // TODO: determine which direction is which when flinging
-        // TODO: fill in moveRight and moveLeft as appropriate,
-        //        and be sure to check for open spaces before rotating
+
+        if(isOver){
+            return false;
+        }
     	if(vX>0){
     		// TODO: check to make sure the rotate won't cause an error
     		board.removeBlock(currentBlock);
@@ -278,7 +279,9 @@ public class Game implements GestureListener, InputProcessor {
 
     @Override
     public boolean keyUp(int i) {
-    	
+
+        if(isOver) return false;
+
     	if(i == Keys.SPACE) isPaused = !isPaused;
     	if(i == Keys.UP) {
     		// TODO: check to make sure the rotate won't cause an error

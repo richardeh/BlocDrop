@@ -57,7 +57,8 @@ public class blocdrop implements ApplicationListener {
 	}
 
 	@Override
-	public void render() {		
+	public void render() {
+        // TODO: draw the next piece. the lower-left coordinate for the 'next' box is 480, 513
 		Gdx.gl.glViewport((int)viewport.x, (int)viewport.y, (int)viewport.width, (int)viewport.height);
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
