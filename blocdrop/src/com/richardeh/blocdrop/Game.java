@@ -226,29 +226,57 @@ public class Game implements GestureListener, InputProcessor {
         if(isOver){
             return false;
         }
-    	if(vX>0){
-    		// TODO: check to make sure the rotate won't cause an error
+    	if(vX>500){
+    		// Swipe right
     		board.removeBlock(currentBlock);
     		currentBlock.moveRight();
-    		board.insertBlock(currentBlock);
+            if(checkMove()){
+                hasMoved = true;
+                board.insertBlock(currentBlock);
+                return true;
+            } else {
+                currentBlock.undo();
+                board.insertBlock(currentBlock);
+                return false;
+            }
     	}
-    	if(vX<0){
-    		// TODO: add check to make sure the space isn't occupied
+    	if(vX<-500){
+    		// Swipe Left
     		for(Vector2 v:currentBlock.getCoords()){
         		if (v.y==0) return false;
         		if (board.getPosition((int)v.x, (int)v.y-1)!=0) return false;
         	}
     		board.removeBlock(currentBlock);
     		currentBlock.moveLeft();
-    		board.insertBlock(currentBlock);
+            if(checkMove()){
+                hasMoved = true;
+                board.insertBlock(currentBlock);
+                return true;
+            } else {
+                currentBlock.undo();
+                board.insertBlock(currentBlock);
+                return false;
+            }
     	}
-    	if(vY>0){
+    	if(vY>500){
     		// TODO: check to make sure the rotate won't cause an error
     		if(currentBlock.getShape() == Block.Shape.O) return false;
     		board.removeBlock(currentBlock);
     		currentBlock.rotate();
-    		board.insertBlock(currentBlock);
+            if(checkMove()){
+                hasMoved = true;
+                board.insertBlock(currentBlock);
+                return true;
+            } else {
+                currentBlock.undo();
+                board.insertBlock(currentBlock);
+                return false;
+            }
     	}
+        if(vY<-500){
+            // swipe down
+            tryMoveDown();
+        }
         return false;
     }
 
@@ -376,5 +404,9 @@ public class Game implements GestureListener, InputProcessor {
     
     public int getScore(){
     	return score;
+    }
+
+    public Block getNextBlock(){
+        return nextBlock;
     }
 }

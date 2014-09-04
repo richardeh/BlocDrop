@@ -1,6 +1,7 @@
 package com.richardeh.blocdrop;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
@@ -65,6 +66,7 @@ public class blocdrop implements ApplicationListener {
 		
 		camera.update();
 		ArrayList<ArrayList<Integer>> currentBoard = game.getBoard().getBoard();
+        Sprite currSprite = new Sprite();
 		batch.begin();
 		batch.draw(Assets.backgroundRegion,0,0);
 		for(int x=0;x<currentBoard.size();x++){
@@ -72,35 +74,31 @@ public class blocdrop implements ApplicationListener {
 				
 				switch(currentBoard.get(x).get(y)){
 					case 0:
-						whiteSprite.setPosition(32*y+64, 32*x+32);
-						whiteSprite.draw(batch);
+                        currSprite = whiteSprite;
 						break;
 					case 1:
-						blueSprite.setPosition(32*y+64, 32*x+32);
-						blueSprite.draw(batch);
+						currSprite = blueSprite;
 						break;
 					case 2:
-						redSprite.setPosition(32*y+64, 32*x+32);
-						redSprite.draw(batch);
+						currSprite = orangeSprite;
 						break;
 					case 3:
-						orangeSprite.setPosition(32*y+64,32*x+32);
-						orangeSprite.draw(batch);
+						currSprite = orangeSprite;
 						break;
 					case 4:
-						yellowSprite.setPosition(32*y+64,32*x+32);
-						yellowSprite.draw(batch);
+						currSprite = yellowSprite;
 						break;
 					case 5:
-						greenSprite.setPosition(32*y+64, 32*x+32);
-						greenSprite.draw(batch);
+						currSprite = greenSprite;
 						break;
 						default:
 							break;
 				}
-				
+				currSprite.setPosition(32*y+64, 32*x+32);
+                currSprite.draw(batch);
 			}
 		}
+        drawNext();
 		batch.end();
         ticks += System.currentTimeMillis()-deltaTime;
 		if(ticks>=1*speed){
@@ -141,4 +139,64 @@ public class blocdrop implements ApplicationListener {
 	public void resume() {
 		Assets.music.play();
 	}
+
+    private void drawNext(){
+        Block next = game.getNextBlock();
+        Sprite currSprite = new Sprite();
+        ArrayList<Vector2> positions = new ArrayList<Vector2>();
+        float posX=0, posY=0;
+        // TODO: arrange the block so it is centered in the 'next' window
+        switch(next.getShape()){
+            case O:
+                positions.add(new Vector2(1,1));
+                positions.add(new Vector2(2,1));
+                positions.add(new Vector2(1,2));
+                positions.add(new Vector2(2,2));
+                break;
+            case I:
+                positions.add(new Vector2(1.5f,0));
+                positions.add(new Vector2(1.5f,1));
+                positions.add(new Vector2(1.5f,2));
+                positions.add(new Vector2(1.5f,3));
+                break;
+            case T:
+                break;
+            case L:
+                break;
+            case J:
+                break;
+            case S:
+                break;
+            case Z:
+                break;
+        }
+
+        switch(next.getValue()){
+            case 0:
+                currSprite = whiteSprite;
+                break;
+            case 1:
+                currSprite = blueSprite;
+                break;
+            case 2:
+                currSprite = orangeSprite;
+                break;
+            case 3:
+                currSprite = orangeSprite;
+                break;
+            case 4:
+                currSprite = yellowSprite;
+                break;
+            case 5:
+                currSprite = greenSprite;
+                break;
+            default:
+                break;
+        }
+
+        for(Vector2 v:positions){
+            currSprite.setPosition(v.x*32+480,v.y*32+513);
+            currSprite.draw(batch);
+        }
+    }
 }
