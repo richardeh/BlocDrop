@@ -40,50 +40,50 @@ public class Block extends DynamicGameObject{
 
 
     private void setStartCoords(){
-
+    	// TODO: this should really be a function of the game, not the block itself
         coords = new ArrayList<Vector2>();
         switch (shape){
             case I:
-                for(int i=10;i<14;i++){
+                for(int i=19;i<23;i++){
                     coords.add(new Vector2(i,5));
                 }
                 break;
             case J:
-                coords.add(new Vector2(14,4));
-                for(int i=14;i<17;i++){
+                coords.add(new Vector2(19,4));
+                for(int i=19;i<22;i++){
                     coords.add(new Vector2(i,5));
                 }
                 break;
             case L:
-                coords.add(new Vector2(14,5));
-                for(int i=14;i<17;i++){
+                coords.add(new Vector2(19,5));
+                for(int i=19;i<22;i++){
                     coords.add(new Vector2(i,4));
                 }
                 break;
             case O:
-                coords.add(new Vector2(14,4));
-                coords.add(new Vector2(14,5));
-                coords.add(new Vector2(15,4));
-                coords.add(new Vector2(15,5));
+                coords.add(new Vector2(19,4));
+                coords.add(new Vector2(19,5));
+                coords.add(new Vector2(20,4));
+                coords.add(new Vector2(20,5));
                 break;
             case T:
-                coords.add(new Vector2(14,5));
+                coords.add(new Vector2(19,5));
 
                 for(int i=4;i<7;i++){
-                    coords.add(new Vector2(15,i));
+                    coords.add(new Vector2(20,i));
                 }
                 break;
             case S:
-                coords.add(new Vector2(14,4));
-                coords.add(new Vector2(14,5));
-                coords.add(new Vector2(15,5));
-                coords.add(new Vector2(15,6));
+                coords.add(new Vector2(19,4));
+                coords.add(new Vector2(19,5));
+                coords.add(new Vector2(20,5));
+                coords.add(new Vector2(20,6));
                 break;
             case Z:
-                coords.add(new Vector2(14,5));
-                coords.add(new Vector2(14,4));
-                coords.add(new Vector2(15,4));
-                coords.add(new Vector2(15,3));
+                coords.add(new Vector2(19,5));
+                coords.add(new Vector2(19,4));
+                coords.add(new Vector2(20,4));
+                coords.add(new Vector2(20,3));
                 break;
         }
 

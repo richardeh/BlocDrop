@@ -48,6 +48,7 @@ public class blocdrop implements ApplicationListener {
 		deltaTime = System.currentTimeMillis();
         ticks = 0;
         speed = 2;
+        Assets.music.setLooping(true);
         Assets.music.play();
 	}
 
@@ -59,7 +60,7 @@ public class blocdrop implements ApplicationListener {
 
 	@Override
 	public void render() {
-        // TODO: draw the next piece. the lower-left coordinate for the 'next' box is 480, 513
+		// TODO: Draw the scoreboard
 		Gdx.gl.glViewport((int)viewport.x, (int)viewport.y, (int)viewport.width, (int)viewport.height);
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -69,7 +70,7 @@ public class blocdrop implements ApplicationListener {
         Sprite currSprite = new Sprite();
 		batch.begin();
 		batch.draw(Assets.backgroundRegion,0,0);
-		for(int x=0;x<currentBoard.size();x++){
+		for(int x=0;x<currentBoard.size()-3;x++){
 			for(int y=0;y<currentBoard.get(x).size();y++){
 				
 				switch(currentBoard.get(x).get(y)){
@@ -141,11 +142,11 @@ public class blocdrop implements ApplicationListener {
 	}
 
     private void drawNext(){
+    	// Draws the next piece in the 'next' window
         Block next = game.getNextBlock();
         Sprite currSprite = new Sprite();
         ArrayList<Vector2> positions = new ArrayList<Vector2>();
-        float posX=0, posY=0;
-        // TODO: arrange the block so it is centered in the 'next' window
+
         switch(next.getShape()){
             case O:
                 positions.add(new Vector2(1,1));
@@ -160,14 +161,35 @@ public class blocdrop implements ApplicationListener {
                 positions.add(new Vector2(1.5f,3));
                 break;
             case T:
+            	positions.add(new Vector2(0.5f,1));
+            	positions.add(new Vector2(1.5f,1));
+            	positions.add(new Vector2(2.5f,1));
+            	positions.add(new Vector2(1.5f,2));
                 break;
             case L:
+            	positions.add(new Vector2(1,0.5f));
+            	positions.add(new Vector2(1,1.5f));
+            	positions.add(new Vector2(1,2.5f));
+            	positions.add(new Vector2(2,0.5f));
                 break;
             case J:
+            	positions.add(new Vector2(2,0.5f));
+            	positions.add(new Vector2(2,1.5f));
+            	positions.add(new Vector2(2,2.5f));
+            	positions.add(new Vector2(1,0.5f));
                 break;
             case S:
+
+            	positions.add(new Vector2(0.5f,1));
+            	positions.add(new Vector2(1.5f,1));
+            	positions.add(new Vector2(1.5f,2));
+            	positions.add(new Vector2(2.5f,2));
                 break;
             case Z:
+            	positions.add(new Vector2(0.5f,2));
+            	positions.add(new Vector2(1.5f,2));
+            	positions.add(new Vector2(1.5f,1));
+            	positions.add(new Vector2(2.5f,1));
                 break;
         }
 

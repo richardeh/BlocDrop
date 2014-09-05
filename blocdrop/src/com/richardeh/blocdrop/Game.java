@@ -159,6 +159,7 @@ public class Game implements GestureListener, InputProcessor {
 
     	board.removeBlock(currentBlock);
     	if(!currentBlock.moveDown()) {
+    		currentBlock.undo();
     		board.insertBlock(currentBlock);
     		return false;
     	}
@@ -363,6 +364,7 @@ public class Game implements GestureListener, InputProcessor {
         	}
     	}
     	if(i == Keys.DOWN){
+    		// TODO: fix disappearing glitch
     		tryMoveDown();
     	}
         return false;

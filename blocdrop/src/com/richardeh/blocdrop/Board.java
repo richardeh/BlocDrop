@@ -8,7 +8,7 @@ public class Board {
 
 	private ArrayList<ArrayList<Integer>> board, previousBoard;
 	private static final int BOARD_WIDTH = 10;
-	private static final int BOARD_HEIGHT= 18;
+	private static final int BOARD_HEIGHT= 23;
 	
 	public Board(){
 
