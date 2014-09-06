@@ -1,7 +1,6 @@
 package com.richardeh.blocdrop;
 
 import java.util.ArrayList;
-import java.util.Vector;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
@@ -91,6 +90,9 @@ public class blocdrop implements ApplicationListener {
 						break;
 					case 5:
 						currSprite = greenSprite;
+						break;
+					case 6:
+						currSprite = redSprite;
 						break;
 						default:
 							break;
@@ -212,6 +214,9 @@ public class blocdrop implements ApplicationListener {
             case 5:
                 currSprite = greenSprite;
                 break;
+            case 6:
+            	currSprite = redSprite;
+            	break;
             default:
                 break;
         }

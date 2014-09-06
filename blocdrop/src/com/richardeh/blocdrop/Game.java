@@ -11,8 +11,6 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Sort;
-import com.badlogic.gdx.utils.SortedIntList;
 
 public class Game implements GestureListener, InputProcessor {
 
@@ -108,7 +106,7 @@ public class Game implements GestureListener, InputProcessor {
 			default:
 				return randomBlock();
 		}
-        return new Block(0,0,64,64,shape,rand.nextInt(5)+1);
+        return new Block(0,0,64,64,shape,rand.nextInt(6)+1);
 	}
 	
 	private boolean isPlaying(){
