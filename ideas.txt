@@ -60,3 +60,20 @@ want to do:
 
 wants:
 - same as before, graphics to include a scoreboard and next piece, as well as regular speed increases
+
+[update 3 9/6/2014]
+
+- next piece displays in the appropriate window.
+- fixed the excess deletion of rows.
+- added music
+
+- working on a solution to rotation near the edges.
+- gesture detector is working but still needs tuning on android
+- still working on android graphics
+- scoreboard is in place, but need to create numbers and draw them
+
+wants:
+- sort code into appropriate places, and simplify and clean up to reduce repetition
+- make better game music
+- make sounds for row elimination maybe?
+- tune the scoring system, maybe add 10 points for putting a piece down and 100 for completing a row
