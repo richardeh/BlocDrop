@@ -59,7 +59,7 @@ public class blocdrop implements ApplicationListener {
 
 	@Override
 	public void render() {
-		// TODO: Draw the scoreboard
+		// TODO: Draw the scoreboard. Fix the camera so that it fills the whole screen regardless of screen size
 		Gdx.gl.glViewport((int)viewport.x, (int)viewport.y, (int)viewport.width, (int)viewport.height);
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

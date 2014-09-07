@@ -1,4 +1,5 @@
 /Tetris_UI.tmx
+/background.png
 /blue.png
 /com/
 /data/
@@ -6,5 +7,11 @@
 /kenpixel.ttf
 /leftButton.png
 /music.ogg
-/blocdrop_background.png
-/background.png
+/orange.png
+/pause.png
+/red.png
+/rightButton.png
+/rotate.png
+/soundOn.png
+/white.png
+/yellow.png

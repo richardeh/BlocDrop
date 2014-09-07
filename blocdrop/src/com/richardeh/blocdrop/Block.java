@@ -93,13 +93,12 @@ public class Block extends DynamicGameObject{
     public boolean moveDown(){
     	copyCoords();
 
-    	for(Vector2 v:coords){
-    		if(v.x >0){
-                coords.set(coords.indexOf(v), new Vector2(v.x-1, v.y));
-            } else {
-                return false;
-            }
+    	if(getLowest()==0){
+    		return false;
     	}
+    	for(Vector2 v:coords){
+    		coords.set(coords.indexOf(v), new Vector2(v.x-1, v.y));
+      	}
         return true;
     }
 
@@ -398,6 +397,38 @@ public class Block extends DynamicGameObject{
     
     public Shape getShape(){
     	return shape;
+    }
+    public float getRightEdge(){
+    	// returns the right-most Y value
+    	float rightY = 0f;
+    	for(Vector2 v:coords){
+    		if (v.y>rightY){
+    			rightY = v.y;
+    		}
+    	}
+    	return rightY;
+    }
+    
+    public float getLeftEdge(){
+    	// returns the left-most X value
+    	float leftY = 99f;
+    	for(Vector2 v:coords){
+    		if(v.y<leftY){
+    			leftY = v.y;
+    		}
+    	}
+    	return leftY;
+    }
+    
+    public float getLowest(){
+    	// returns the lowest Y value
+    	float bottomX = 99f;
+    	for(Vector2 v:coords){
+    		if(v.x<bottomX){
+    			bottomX = v.x;
+    		}
+    	}
+    	return bottomX;
     }
     
     private void copyCoords(){

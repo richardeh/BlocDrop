@@ -128,6 +128,7 @@ public class Game implements GestureListener, InputProcessor {
     
     private boolean checkMove(){
     	// Make sure there's nothing in the way
+    	// TODO: utilize the left/right functions to make sure we're not hitting an edge
     	
     	// create lists of the new and old coordinates
         ArrayList<Vector2> newCoords =currentBlock.getCoords();
@@ -154,7 +155,11 @@ public class Game implements GestureListener, InputProcessor {
 
     private boolean tryMoveDown(){
     	// Attempt to move a piece down the board
-
+    	// TODO: rewrite utilizing the new getLowest() function
+    	if(currentBlock.getLowest()<=0){
+    		return false;
+    	}
+    	System.out.println(currentBlock.getLowest());
     	board.removeBlock(currentBlock);
     	if(!currentBlock.moveDown()) {
     		currentBlock.undo();
@@ -225,6 +230,7 @@ public class Game implements GestureListener, InputProcessor {
         if(isOver){
             return false;
         }
+        System.out.println("vx: "+vX+ " vY: "+vY);
     	if(vX>500){
     		// Swipe right
     		board.removeBlock(currentBlock);
@@ -239,7 +245,7 @@ public class Game implements GestureListener, InputProcessor {
                 return false;
             }
     	}
-    	if(vX<-500){
+    	if(vX<-250){
     		// Swipe Left
     		for(Vector2 v:currentBlock.getCoords()){
         		if (v.y==0) return false;
@@ -257,7 +263,7 @@ public class Game implements GestureListener, InputProcessor {
                 return false;
             }
     	}
-    	if(vY>500){
+    	if(vY<-500){
     		// TODO: check to make sure the rotate won't cause an error
     		if(currentBlock.getShape() == Block.Shape.O) return false;
     		board.removeBlock(currentBlock);
@@ -272,7 +278,7 @@ public class Game implements GestureListener, InputProcessor {
                 return false;
             }
     	}
-        if(vY<-500){
+        if(vY>500){
             // swipe down
             tryMoveDown();
         }
