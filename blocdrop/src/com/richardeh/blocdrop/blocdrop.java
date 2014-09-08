@@ -13,8 +13,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class blocdrop implements ApplicationListener {
 	
-	private static final int VIRTUAL_WIDTH = 640;
-	private static final int VIRTUAL_HEIGHT = 800;
+	private static final int VIRTUAL_WIDTH = 1024;
+	private static final int VIRTUAL_HEIGHT = 1536;
 	private static final float ASPECT_RATIO = (float)VIRTUAL_WIDTH/(float)VIRTUAL_HEIGHT;
 	
 	private OrthographicCamera camera;
@@ -23,7 +23,7 @@ public class blocdrop implements ApplicationListener {
 	private Board board;
 	private Rectangle viewport;
 	Game game;
-    private float deltaTime, ticks;
+    private float deltaTime, maxTime;
     public int speed;
 	float w, h;
 	
@@ -44,11 +44,13 @@ public class blocdrop implements ApplicationListener {
 		greenSprite = new Sprite(Assets.greenRegion);
 		orangeSprite = new Sprite(Assets.orangeRegion);
 		yellowSprite = new Sprite(Assets.yellowRegion);
-		deltaTime = System.currentTimeMillis();
-        ticks = 0;
-        speed = 2;
+		deltaTime = Gdx.graphics.getDeltaTime();
+		speed = 1;
+		maxTime = 1;
         Assets.music.setLooping(true);
         Assets.music.play();
+        System.out.println(deltaTime);
+        System.out.println(maxTime);
 	}
 
 	@Override
@@ -103,13 +105,14 @@ public class blocdrop implements ApplicationListener {
 		}
         drawNext();
 		batch.end();
-        ticks += System.currentTimeMillis()-deltaTime;
-		if(ticks>=1*speed){
+		
+        deltaTime += Gdx.graphics.getDeltaTime();
+        System.out.println(deltaTime);
+        speed = game.getRowsCleared()>10?game.getRowsCleared()%10+1:1;
+		if(deltaTime>maxTime*speed){
             game.updateGame();
-            ticks = 0;
-        } else{
-        	ticks +=0.1;
-        }
+            deltaTime = 0;
+        } 
 	}
 
 	@Override

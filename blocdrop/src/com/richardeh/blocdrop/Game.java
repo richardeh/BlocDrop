@@ -23,6 +23,7 @@ public class Game implements GestureListener, InputProcessor {
     private boolean isOver;
     private boolean isPaused;
     private int score;
+    private int rowsCleared = 0;
     
     InputMultiplexer im;
 
@@ -159,7 +160,6 @@ public class Game implements GestureListener, InputProcessor {
     	if(currentBlock.getLowest()<=0){
     		return false;
     	}
-    	System.out.println(currentBlock.getLowest());
     	board.removeBlock(currentBlock);
     	if(!currentBlock.moveDown()) {
     		currentBlock.undo();
@@ -194,7 +194,8 @@ public class Game implements GestureListener, InputProcessor {
     		if(board.getBoard().get(row).contains(0)){
     			continue;
     		} else {
-    			scoreMultiplier++; 
+    			scoreMultiplier++;
+    			rowsCleared++;
     			rowsToDelete.add(row);
     		}
     	}
@@ -414,5 +415,9 @@ public class Game implements GestureListener, InputProcessor {
 
     public Block getNextBlock(){
         return nextBlock;
+    }
+    
+    public int getRowsCleared(){
+    	return rowsCleared;
     }
 }
