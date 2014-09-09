@@ -246,12 +246,12 @@ public class Game implements GestureListener, InputProcessor {
                 return false;
             }
     	}
-    	if(vX<-250){
+    	if(vX<0){
     		// Swipe Left
-    		for(Vector2 v:currentBlock.getCoords()){
+    		/*for(Vector2 v:currentBlock.getCoords()){
         		if (v.y==0) return false;
         		if (board.getPosition((int)v.x, (int)v.y-1)!=0) return false;
-        	}
+        	}*/
     		board.removeBlock(currentBlock);
     		currentBlock.moveLeft();
             if(checkMove()){

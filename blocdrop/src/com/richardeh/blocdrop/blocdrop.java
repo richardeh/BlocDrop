@@ -107,7 +107,7 @@ public class blocdrop implements ApplicationListener {
 		batch.end();
 		
         deltaTime += Gdx.graphics.getDeltaTime();
-        System.out.println(deltaTime);
+        
         speed = game.getRowsCleared()>10?game.getRowsCleared()%10+1:1;
 		if(deltaTime>maxTime*speed){
             game.updateGame();
