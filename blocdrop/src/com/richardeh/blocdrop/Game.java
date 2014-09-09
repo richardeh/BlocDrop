@@ -234,6 +234,7 @@ public class Game implements GestureListener, InputProcessor {
         System.out.println("vx: "+vX+ " vY: "+vY);
     	if(vX>500){
     		// Swipe right
+    		if(currentBlock.getRightEdge()==board.getWidth()-1){return false;}
     		board.removeBlock(currentBlock);
     		currentBlock.moveRight();
             if(checkMove()){
@@ -246,12 +247,9 @@ public class Game implements GestureListener, InputProcessor {
                 return false;
             }
     	}
-    	if(vX<0){
+    	if(vX<-500){
     		// Swipe Left
-    		/*for(Vector2 v:currentBlock.getCoords()){
-        		if (v.y==0) return false;
-        		if (board.getPosition((int)v.x, (int)v.y-1)!=0) return false;
-        	}*/
+    		if(currentBlock.getLeftEdge()==0){return false;}
     		board.removeBlock(currentBlock);
     		currentBlock.moveLeft();
             if(checkMove()){
