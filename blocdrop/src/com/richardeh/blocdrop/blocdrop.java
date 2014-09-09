@@ -24,7 +24,7 @@ public class blocdrop implements ApplicationListener {
 	private Rectangle viewport;
 	Game game;
     private float deltaTime, maxTime;
-    public int speed;
+    public float speed, speedMod;
 	float w, h;
 	
 	@Override
@@ -45,8 +45,8 @@ public class blocdrop implements ApplicationListener {
 		orangeSprite = new Sprite(Assets.orangeRegion);
 		yellowSprite = new Sprite(Assets.yellowRegion);
 		deltaTime = Gdx.graphics.getDeltaTime();
-		speed = 1;
-		maxTime = 1;
+		speed = 10;
+		maxTime = 10;
         Assets.music.setLooping(true);
         Assets.music.play();
         System.out.println(deltaTime);
@@ -105,11 +105,11 @@ public class blocdrop implements ApplicationListener {
 		}
         drawNext();
 		batch.end();
-		
+		drawScoreBoard(game.getScore());
         deltaTime += Gdx.graphics.getDeltaTime();
-        
-        speed = game.getRowsCleared()>10?game.getRowsCleared()%10+1:1;
-		if(deltaTime>maxTime*speed){
+        int rows = game.getRowsCleared();
+        speedMod = calculateSpeedMod(rows);
+		if(deltaTime>(maxTime/(speed-speedMod))){
             game.updateGame();
             deltaTime = 0;
         } 
@@ -228,5 +228,21 @@ public class blocdrop implements ApplicationListener {
             currSprite.setPosition(v.x*32+480,v.y*32+513);
             currSprite.draw(batch);
         }
+    }
+
+    private float calculateSpeedMod(int rows){
+        if(rows<10) return 0;
+        if(rows<100) return (rows/10)%10;
+        return 9;
+    }
+
+    private void drawScoreBoard(int score){
+        float ones, tens, hundreds, thousands, tenKs, hundredKs;
+        hundredKs = score/100000;
+        tenKs = (score - (hundredKs*100000))/10000;
+        thousands = (score - (hundredKs*100000)-(tenKs*10000))/1000;
+        hundreds = (score - (hundredKs*100000)-(tenKs*10000)-(thousands*1000))/100;
+        tens = (score - (hundredKs*100000)-(tenKs*10000)-(thousands*1000)-(hundreds*100))/10;
+        ones = (score - (hundredKs*100000)-(tenKs*10000)-(thousands*1000)-(hundreds*100)-(tens*10));
     }
 }
