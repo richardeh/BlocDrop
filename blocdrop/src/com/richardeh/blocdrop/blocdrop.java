@@ -61,7 +61,7 @@ public class blocdrop implements ApplicationListener {
 
 	@Override
 	public void render() {
-		// TODO: Draw the scoreboard. Fix the camera so that it fills the whole screen regardless of screen size
+		// TODO: Fix the camera so that it fills the whole screen regardless of screen size
 		Gdx.gl.glViewport((int)viewport.x, (int)viewport.y, (int)viewport.width, (int)viewport.height);
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -237,13 +237,44 @@ public class blocdrop implements ApplicationListener {
     }
 
     private void drawScoreBoard(int score){
-        int ones, tens, hundreds, thousands, tenKs, hundredKs;
-        hundredKs = score/100000;
-        tenKs = (score - (hundredKs*100000))/10000;
-        thousands = (score - (hundredKs*100000)-(tenKs*10000))/1000;
-        hundreds = (score - (hundredKs*100000)-(tenKs*10000)-(thousands*1000))/100;
-        tens = (score - (hundredKs*100000)-(tenKs*10000)-(thousands*1000)-(hundreds*100))/10;
-        ones = (score - (hundredKs*100000)-(tenKs*10000)-(thousands*1000)-(hundreds*100)-(tens*10));
-        System.out.println(hundredKs+","+tenKs+","+thousands+","+hundreds+","+tens+","+ones);
+        // Draw the scoreboard
+        Sprite numSprite = new Sprite();
+        // Determine the digits of the score
+        ArrayList<Integer> digits = new ArrayList<Integer>();
+        digits.add((score%10000)/1000);
+        digits.add((score %1000)/100);
+        digits.add((score %100)/10);
+        digits.add((score %10));
+        batch.begin();
+        for(int i:digits){
+            // paint the appropriate digit in the appropriate place 480, 325
+            switch(i){
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                default:
+                    break;
+            }
+            numSprite.setPosition(480+digits.indexOf(i)*32,325);
+            numSprite.draw(batch);
+        }
+        batch.end();
     }
 }

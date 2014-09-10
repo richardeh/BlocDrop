@@ -9,21 +9,14 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Assets {
 	public static Texture background;
 	public static TextureRegion backgroundRegion;
-	
-	public static Texture leftButton, rightButton;
-	public static TextureRegion leftBtnRegion, rightBtnRegion;
-	
-	public static Texture soundOn, soundOff;
-	public static TextureRegion soundOnRegion, soundOffRegion;
-	
-	public static Texture pause;
-	public static TextureRegion pauseRegion;
+
+    public static Texture numberTexture;
+    public static TextureRegion zero, one, two, three, four, five, six, seven, eight, nine;
 	
 	public static Texture redSquare, blueSquare, greenSquare, orangeSquare, yellowSquare, whiteSquare;
 	public static TextureRegion redRegion, blueRegion, greenRegion, orangeRegion, yellowRegion, whiteRegion;
 	
 	public static Music music;
-	public static Sound rowClearSound;
 	
 	public static void load(){
 		background = new Texture(Gdx.files.internal("background.png"));
@@ -55,6 +48,5 @@ public class Assets {
         yellowSquare.dispose();
         orangeSquare.dispose();
         music.dispose();
-        //rowClearSound.dispose();
     }
 }
