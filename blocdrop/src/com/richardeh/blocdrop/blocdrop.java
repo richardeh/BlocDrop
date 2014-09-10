@@ -237,12 +237,13 @@ public class blocdrop implements ApplicationListener {
     }
 
     private void drawScoreBoard(int score){
-        float ones, tens, hundreds, thousands, tenKs, hundredKs;
+        int ones, tens, hundreds, thousands, tenKs, hundredKs;
         hundredKs = score/100000;
         tenKs = (score - (hundredKs*100000))/10000;
         thousands = (score - (hundredKs*100000)-(tenKs*10000))/1000;
         hundreds = (score - (hundredKs*100000)-(tenKs*10000)-(thousands*1000))/100;
         tens = (score - (hundredKs*100000)-(tenKs*10000)-(thousands*1000)-(hundreds*100))/10;
         ones = (score - (hundredKs*100000)-(tenKs*10000)-(thousands*1000)-(hundreds*100)-(tens*10));
+        System.out.println(hundredKs+","+tenKs+","+thousands+","+hundreds+","+tens+","+ones);
     }
 }
