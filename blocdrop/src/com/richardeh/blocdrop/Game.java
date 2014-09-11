@@ -14,7 +14,9 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Game implements GestureListener, InputProcessor {
 
-	private static final int ROW_SCORE = 10;
+	private static final int ROW_SCORE = 100;
+	private static final int BLOCK_SCORE = 10;
+	
 	public Board board;
 	public Block currentBlock;
 	public Block nextBlock;
@@ -22,7 +24,7 @@ public class Game implements GestureListener, InputProcessor {
 	private boolean hasMoved;
     private boolean isOver;
     private boolean isPaused;
-    private int score;
+    private static int score;
     private int rowsCleared = 0;
     
     InputMultiplexer im;
@@ -74,6 +76,7 @@ public class Game implements GestureListener, InputProcessor {
                     currentBlock = nextBlock;
                     nextBlock = randomBlock();
                     hasMoved = false;
+                    score += BLOCK_SCORE;
                 }
             }
 		}
@@ -182,7 +185,6 @@ public class Game implements GestureListener, InputProcessor {
         // TODO: method stub
     	
         isOver = true;
-        System.out.println(score);
     }
 
     private int updateScore(List<Integer> rows){
@@ -231,7 +233,7 @@ public class Game implements GestureListener, InputProcessor {
         if(isOver){
             return false;
         }
-        System.out.println("vx: "+vX+ " vY: "+vY);
+        
     	if(vX>500){
     		// Swipe right
     		if(currentBlock.getRightEdge()==board.getWidth()-1){return false;}

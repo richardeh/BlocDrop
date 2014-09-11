@@ -20,6 +20,7 @@ public class blocdrop implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Sprite blueSprite, redSprite, greenSprite, orangeSprite,yellowSprite, whiteSprite;
+	private Sprite zeroSprite, oneSprite, twoSprite, threeSprite,fourSprite,fiveSprite,sixSprite,sevenSprite,eightSprite,nineSprite;
 	private Board board;
 	private Rectangle viewport;
 	Game game;
@@ -44,13 +45,23 @@ public class blocdrop implements ApplicationListener {
 		greenSprite = new Sprite(Assets.greenRegion);
 		orangeSprite = new Sprite(Assets.orangeRegion);
 		yellowSprite = new Sprite(Assets.yellowRegion);
+		
+		zeroSprite = new Sprite(Assets.zero);
+		oneSprite = new Sprite(Assets.one);
+		twoSprite = new Sprite(Assets.two);
+		threeSprite = new Sprite(Assets.three);
+		fourSprite = new Sprite(Assets.four);
+		fiveSprite = new Sprite(Assets.five);
+		sixSprite = new Sprite(Assets.six);
+		sevenSprite = new Sprite(Assets.seven);
+		eightSprite = new Sprite(Assets.eight);
+		nineSprite = new Sprite(Assets.nine);
+		
 		deltaTime = Gdx.graphics.getDeltaTime();
 		speed = 10;
 		maxTime = 10;
         Assets.music.setLooping(true);
         Assets.music.play();
-        System.out.println(deltaTime);
-        System.out.println(maxTime);
 	}
 
 	@Override
@@ -240,39 +251,52 @@ public class blocdrop implements ApplicationListener {
         // Draw the scoreboard
         Sprite numSprite = new Sprite();
         // Determine the digits of the score
-        ArrayList<Integer> digits = new ArrayList<Integer>();
-        digits.add((score%10000)/1000);
-        digits.add((score %1000)/100);
-        digits.add((score %100)/10);
-        digits.add((score %10));
+        int[] digits = new int[4];
+        digits[0] = ((score %10000)/1000);
+        digits[1] = ((score %1000)/100);
+        digits[2] = ((score %100)/10);
+        digits[3] = ((score %10));
         batch.begin();
-        for(int i:digits){
+        for(int i=0;i<digits.length;i++){
             // paint the appropriate digit in the appropriate place 480, 325
-            switch(i){
+        	
+            switch(digits[i]){
                 case 0:
+                	numSprite = zeroSprite;
                     break;
                 case 1:
+                	numSprite = oneSprite;
                     break;
                 case 2:
+                	numSprite = twoSprite;
                     break;
                 case 3:
+                	numSprite = threeSprite;
                     break;
                 case 4:
+                	numSprite = fourSprite;
                     break;
                 case 5:
+                	numSprite = fiveSprite;
                     break;
                 case 6:
+                	numSprite = sixSprite;
                     break;
                 case 7:
+                	numSprite = sevenSprite;
                     break;
                 case 8:
+                	numSprite = eightSprite;
                     break;
                 case 9:
+                	numSprite = nineSprite;
                     break;
                 default:
+                	numSprite = zeroSprite;
                     break;
             }
-            numSprite.setPosition(480+digits.indexOf(i)*32,325);
+            numSprite.setPosition(480+i*32,325);
+            System.out.println(480+i*32);
             numSprite.draw(batch);
         }
         batch.end();

@@ -26,6 +26,7 @@ public class Assets {
 		greenSquare = new Texture(Gdx.files.internal("green.png"));
 		yellowSquare = new Texture(Gdx.files.internal("yellow.png"));
 		whiteSquare = new Texture(Gdx.files.internal("white.png"));
+		numberTexture = new Texture(Gdx.files.internal("numbers.png"));
 		
 		redRegion = new TextureRegion(redSquare, 0, 0, 32, 32);
 		blueRegion = new TextureRegion(blueSquare, 0, 0, 32, 32);
@@ -34,6 +35,17 @@ public class Assets {
 		yellowRegion = new TextureRegion(yellowSquare, 0, 0, 32, 32);
 		whiteRegion = new TextureRegion(whiteSquare, 0, 0, 32, 32);
 		backgroundRegion = new TextureRegion(background, 0, 0, 640,800);
+		zero = new TextureRegion(numberTexture,0,0,16,24);
+		one = new TextureRegion(numberTexture, 21,0,16,24);
+		two = new TextureRegion(numberTexture, 40,0,16,24);
+		three = new TextureRegion(numberTexture, 60,0,16,24);
+		four = new TextureRegion(numberTexture,78,0,18,24);
+		five = new TextureRegion(numberTexture, 100,0, 16,24);
+		six = new TextureRegion(numberTexture, 119,0,16,24);
+		seven = new TextureRegion(numberTexture,139,0,17,24);
+		eight = new TextureRegion(numberTexture, 160,0,15,24);
+		nine = new TextureRegion(numberTexture, 179,0,16,24);
+		
 		music = Gdx.audio.newMusic(Gdx.files.internal("music.ogg"));
 	}
 	
