@@ -83,7 +83,7 @@ public class Game implements GestureListener, InputProcessor {
 	}
 	
 	private Block randomBlock(){
-        Block.Shape shape = null;
+        Block.Shape shape;
 
 		switch(rand.nextInt(7)){
 		case 0:
@@ -141,9 +141,7 @@ public class Game implements GestureListener, InputProcessor {
     	
         for(Vector2 pos:newCoords){
         	// If the new position is also in the old list, it doesn't need checked
-        	if(oldCoords.contains(pos))
-        		continue;
-        	else
+        	if(!oldCoords.contains(pos))
         		coordsToCheck.add(pos);
         }
         
@@ -159,7 +157,6 @@ public class Game implements GestureListener, InputProcessor {
 
     private boolean tryMoveDown(){
     	// Attempt to move a piece down the board
-    	// TODO: rewrite utilizing the new getLowest() function
     	if(currentBlock.getLowest()<=0){
     		return false;
     	}
@@ -190,12 +187,10 @@ public class Game implements GestureListener, InputProcessor {
     private int updateScore(List<Integer> rows){
         // Checks to see if a row has filled, score it, and remove it
     	int scoreMultiplier = 0;
-    	int newScore = 0;
+    	int newScore;
     	List<Integer> rowsToDelete = new ArrayList<Integer>();
     	for(int row:rows){
-    		if(board.getBoard().get(row).contains(0)){
-    			continue;
-    		} else {
+    		if(!board.getBoard().get(row).contains(0)){
     			scoreMultiplier++;
     			rowsCleared++;
     			rowsToDelete.add(row);
@@ -229,7 +224,7 @@ public class Game implements GestureListener, InputProcessor {
 
     @Override
     public boolean fling(float vX, float vY, int i) {
-
+        // TODO: rewrite using board.move function
         if(isOver){
             return false;
         }
@@ -266,7 +261,7 @@ public class Game implements GestureListener, InputProcessor {
     	}
     	if(vY<-500){
     		// TODO: check to make sure the rotate won't cause an error
-    		if(currentBlock.getShape() == Block.Shape.O) return false;
+            if(currentBlock.getShape() == Block.Shape.O) return false;
     		board.removeBlock(currentBlock);
     		currentBlock.rotate();
             if(checkMove()){

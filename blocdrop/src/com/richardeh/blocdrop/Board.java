@@ -3,8 +3,15 @@ package com.richardeh.blocdrop;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class Board {
+
+    public enum Direction{
+        Left,
+        Right,
+        Down
+    }
 
 	private ArrayList<ArrayList<Integer>> board, previousBoard;
 	private static final int BOARD_WIDTH = 10;
@@ -48,6 +55,7 @@ public class Board {
     		board.get((int)position.x).set((int)position.y,0);
     	}
     }
+
     public void undo(){
     	board = previousBoard;
     }
@@ -74,4 +82,59 @@ public class Board {
 		board.add(row);
     }
 
+    public boolean moveBlock(Block block, Direction direction){
+        // attempt to move a block
+        Vector2 modifier = getModifier(direction);
+        ArrayList<Vector2> current = block.getCoords();
+
+        // return false if the given direction is blocked
+        if(!canMove(block,modifier)) return false;
+
+        for(Vector2 v:current){
+            board.get((int)v.x).set((int)v.y,0);
+            v.add(modifier);
+            board.get((int)v.x).set((int)v.y,block.getValue());
+        }
+        return true;
+    }
+
+    private boolean canMove(Block block, Vector2 modifier){
+
+        ArrayList<Vector2> current = block.getCoords();
+        ArrayList<Vector2> future = new ArrayList<Vector2>();
+
+        for(Vector2 v:current){
+            future.add(v.add(modifier));
+        }
+        for(Vector2 v:future){
+            // If the new position is out of bounds, return false
+            if(v.y>=BOARD_WIDTH-1||v.y<0||v.x<0) return false;
+
+            if(!current.contains(v)){
+                if(board.get((int)v.x).get((int)v.y)!=0){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private Vector2 getModifier(Direction direction){
+        Vector2 modifier = new Vector2();
+        switch (direction){
+            case Down:
+                modifier.y = 1;
+                modifier.x = 0;
+                break;
+            case Right:
+                modifier.x = 1;
+                modifier.y = 0;
+                break;
+            case Left:
+                modifier.x = -1;
+                modifier.y = 0;
+                break;
+        }
+        return modifier;
+    }
 }

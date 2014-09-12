@@ -13,15 +13,15 @@ import com.badlogic.gdx.math.Vector2;
 
 public class blocdrop implements ApplicationListener {
 	
-	private static final int VIRTUAL_WIDTH = 1024;
-	private static final int VIRTUAL_HEIGHT = 1536;
+	private static final int VIRTUAL_WIDTH = 480;
+	private static final int VIRTUAL_HEIGHT = 720;
 	private static final float ASPECT_RATIO = (float)VIRTUAL_WIDTH/(float)VIRTUAL_HEIGHT;
 	
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Sprite blueSprite, redSprite, greenSprite, orangeSprite,yellowSprite, whiteSprite;
 	private Sprite zeroSprite, oneSprite, twoSprite, threeSprite,fourSprite,fiveSprite,sixSprite,sevenSprite,eightSprite,nineSprite;
-	private Board board;
+	Board board;
 	private Rectangle viewport;
 	Game game;
     private float deltaTime, maxTime;
@@ -129,7 +129,7 @@ public class blocdrop implements ApplicationListener {
 	@Override
 	public void resize(int width, int height) {
 		float aspectRatio = (float)width/(float)height;
-		float scale = 1f;
+		float scale;
 		Vector2 crop = new Vector2(0f, 0f);
 		
 		if(aspectRatio>ASPECT_RATIO){
@@ -159,6 +159,8 @@ public class blocdrop implements ApplicationListener {
 
     private void drawNext(){
     	// Draws the next piece in the 'next' window
+        // This is probably the ugliest way to get this done.
+
         Block next = game.getNextBlock();
         Sprite currSprite = new Sprite();
         ArrayList<Vector2> positions = new ArrayList<Vector2>();
@@ -249,7 +251,7 @@ public class blocdrop implements ApplicationListener {
 
     private void drawScoreBoard(int score){
         // Draw the scoreboard
-        Sprite numSprite = new Sprite();
+        Sprite numSprite;
         // Determine the digits of the score
         int[] digits = new int[4];
         digits[0] = ((score %10000)/1000);
@@ -258,7 +260,7 @@ public class blocdrop implements ApplicationListener {
         digits[3] = ((score %10));
         batch.begin();
         for(int i=0;i<digits.length;i++){
-            // paint the appropriate digit in the appropriate place 480, 325
+            // paint the appropriate digit
         	
             switch(digits[i]){
                 case 0:

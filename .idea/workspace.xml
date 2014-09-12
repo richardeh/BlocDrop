@@ -26,21 +26,21 @@
       <file leaf-file-name="blocdrop.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/blocdrop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3540" max-vertical-offset="4335">
-              <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="2754">
+              <caret line="74" column="11" selection-start-line="74" selection-start-column="11" selection-end-line="74" selection-end-column="11" />
               <folding>
-                <element signature="method#resize#0;class#blocdrop#0" expanded="false" />
-                <element signature="e#7214#7223#0" expanded="true" />
+                <element signature="method#drawNext#0;class#blocdrop#0" expanded="false" />
+                <element signature="method#drawScoreBoard#0;class#blocdrop#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Assets.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Assets.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Assets.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20067453" vertical-offset="0" max-vertical-offset="884">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
+              <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -49,8 +49,35 @@
       <file leaf-file-name="Game.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5034" max-vertical-offset="6443">
-              <caret line="419" column="5" selection-start-line="419" selection-start-column="5" selection-end-line="419" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3407" max-vertical-offset="6392">
+              <caret line="226" column="50" selection-start-line="226" selection-start-column="50" selection-end-line="226" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Board.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="937" max-vertical-offset="1887">
+              <caret line="116" column="13" selection-start-line="116" selection-start-column="13" selection-end-line="116" selection-end-column="13" />
+              <folding>
+                <element signature="method#insertBlock#0;class#Board#0" expanded="false" />
+                <element signature="method#removeBlock#0;class#Board#0" expanded="false" />
+                <element signature="method#deleteRow#0;class#Board#0" expanded="false" />
+                <element signature="method#addRow#0;class#Board#0" expanded="false" />
+                <element signature="e#1619#1628#0" expanded="true" />
+                <element signature="e#2410#2419#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Block.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Block.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.22091062" vertical-offset="532" max-vertical-offset="7327">
+              <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -66,17 +93,17 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Board.java" />
-        <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Block.java" />
-        <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Game.java" />
         <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/blocdrop.java" />
         <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Assets.java" />
+        <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Game.java" />
+        <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Board.java" />
+        <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Block.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1725" />
-    <option name="y" value="276" />
+    <option name="x" value="1692" />
+    <option name="y" value="235" />
     <option name="width" value="1205" />
     <option name="height" value="729" />
   </component>
@@ -230,6 +257,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -255,19 +295,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -350,7 +377,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1725" y="276" width="1205" height="729" extended-state="0" />
+    <frame x="1692" y="235" width="1205" height="729" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -376,8 +403,8 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -411,8 +438,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2023">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding>
-            <element signature="method#resize#0;class#blocdrop#0" expanded="false" />
-            <element signature="e#7214#7223#0" expanded="true" />
+            <element signature="method#drawNext#0;class#blocdrop#0" expanded="false" />
+            <element signature="method#drawScoreBoard#0;class#blocdrop#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -429,7 +456,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1377">
           <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding />
+          <folding>
+            <element signature="method#insertBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#removeBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#deleteRow#0;class#Board#0" expanded="false" />
+            <element signature="method#addRow#0;class#Board#0" expanded="false" />
+            <element signature="e#1619#1628#0" expanded="true" />
+            <element signature="e#2410#2419#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -453,8 +487,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2023">
           <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
-            <element signature="method#resize#0;class#blocdrop#0" expanded="false" />
-            <element signature="e#7214#7223#0" expanded="true" />
+            <element signature="method#drawNext#0;class#blocdrop#0" expanded="false" />
+            <element signature="method#drawScoreBoard#0;class#blocdrop#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -471,7 +505,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1377">
           <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding />
+          <folding>
+            <element signature="method#insertBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#removeBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#deleteRow#0;class#Board#0" expanded="false" />
+            <element signature="method#addRow#0;class#Board#0" expanded="false" />
+            <element signature="e#1619#1628#0" expanded="true" />
+            <element signature="e#2410#2419#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -495,8 +536,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2074">
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding>
-            <element signature="method#resize#0;class#blocdrop#0" expanded="false" />
-            <element signature="e#7214#7223#0" expanded="true" />
+            <element signature="method#drawNext#0;class#blocdrop#0" expanded="false" />
+            <element signature="method#drawScoreBoard#0;class#blocdrop#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -513,7 +554,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1054">
           <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-          <folding />
+          <folding>
+            <element signature="method#insertBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#removeBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#deleteRow#0;class#Board#0" expanded="false" />
+            <element signature="method#addRow#0;class#Board#0" expanded="false" />
+            <element signature="e#1619#1628#0" expanded="true" />
+            <element signature="e#2410#2419#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -537,8 +585,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1989">
           <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
           <folding>
-            <element signature="method#resize#0;class#blocdrop#0" expanded="false" />
-            <element signature="e#7214#7223#0" expanded="true" />
+            <element signature="method#drawNext#0;class#blocdrop#0" expanded="false" />
+            <element signature="method#drawScoreBoard#0;class#blocdrop#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -555,7 +603,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="969">
           <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-          <folding />
+          <folding>
+            <element signature="method#insertBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#removeBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#deleteRow#0;class#Board#0" expanded="false" />
+            <element signature="method#addRow#0;class#Board#0" expanded="false" />
+            <element signature="e#1619#1628#0" expanded="true" />
+            <element signature="e#2410#2419#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -579,8 +634,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1989">
           <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
           <folding>
-            <element signature="method#resize#0;class#blocdrop#0" expanded="false" />
-            <element signature="e#7214#7223#0" expanded="true" />
+            <element signature="method#drawNext#0;class#blocdrop#0" expanded="false" />
+            <element signature="method#drawScoreBoard#0;class#blocdrop#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -597,7 +652,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="969">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="method#insertBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#removeBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#deleteRow#0;class#Board#0" expanded="false" />
+            <element signature="method#addRow#0;class#Board#0" expanded="false" />
+            <element signature="e#1619#1628#0" expanded="true" />
+            <element signature="e#2410#2419#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -621,8 +683,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1921">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding>
-            <element signature="method#resize#0;class#blocdrop#0" expanded="false" />
-            <element signature="e#7214#7223#0" expanded="true" />
+            <element signature="method#drawNext#0;class#blocdrop#0" expanded="false" />
+            <element signature="method#drawScoreBoard#0;class#blocdrop#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -639,7 +701,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="969">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="method#insertBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#removeBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#deleteRow#0;class#Board#0" expanded="false" />
+            <element signature="method#addRow#0;class#Board#0" expanded="false" />
+            <element signature="e#1619#1628#0" expanded="true" />
+            <element signature="e#2410#2419#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -663,8 +732,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="1921">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding>
-            <element signature="method#resize#0;class#blocdrop#0" expanded="false" />
-            <element signature="e#7214#7223#0" expanded="true" />
+            <element signature="method#drawNext#0;class#blocdrop#0" expanded="false" />
+            <element signature="method#drawScoreBoard#0;class#blocdrop#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -681,7 +750,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="969">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="method#insertBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#removeBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#deleteRow#0;class#Board#0" expanded="false" />
+            <element signature="method#addRow#0;class#Board#0" expanded="false" />
+            <element signature="e#1619#1628#0" expanded="true" />
+            <element signature="e#2410#2419#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -705,8 +781,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1921">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding>
-            <element signature="method#resize#0;class#blocdrop#0" expanded="false" />
-            <element signature="e#7214#7223#0" expanded="true" />
+            <element signature="method#drawNext#0;class#blocdrop#0" expanded="false" />
+            <element signature="method#drawScoreBoard#0;class#blocdrop#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -723,7 +799,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="969">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="method#insertBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#removeBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#deleteRow#0;class#Board#0" expanded="false" />
+            <element signature="method#addRow#0;class#Board#0" expanded="false" />
+            <element signature="e#1619#1628#0" expanded="true" />
+            <element signature="e#2410#2419#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -747,8 +830,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1224">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding>
-            <element signature="method#resize#0;class#blocdrop#0" expanded="false" />
-            <element signature="e#7214#7223#0" expanded="true" />
+            <element signature="method#drawNext#0;class#blocdrop#0" expanded="false" />
+            <element signature="method#drawScoreBoard#0;class#blocdrop#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -787,45 +870,52 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Assets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
+          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/blocdrop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3540" max-vertical-offset="4335">
-          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="2754">
+          <caret line="74" column="11" selection-start-line="74" selection-start-column="11" selection-end-line="74" selection-end-column="11" />
           <folding>
-            <element signature="method#resize#0;class#blocdrop#0" expanded="false" />
-            <element signature="e#7214#7223#0" expanded="true" />
+            <element signature="method#drawNext#0;class#blocdrop#0" expanded="false" />
+            <element signature="method#drawScoreBoard#0;class#blocdrop#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Block.java">
+    <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2040" max-vertical-offset="7599">
-          <caret line="120" column="24" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3407" max-vertical-offset="6392">
+          <caret line="226" column="50" selection-start-line="226" selection-start-column="50" selection-end-line="226" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6020236" vertical-offset="0" max-vertical-offset="1241">
-          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="682" max-vertical-offset="1887">
+          <caret line="116" column="13" selection-start-line="116" selection-start-column="13" selection-end-line="116" selection-end-column="13" />
+          <folding>
+            <element signature="method#insertBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#removeBlock#0;class#Board#0" expanded="false" />
+            <element signature="method#deleteRow#0;class#Board#0" expanded="false" />
+            <element signature="method#addRow#0;class#Board#0" expanded="false" />
+            <element signature="e#1619#1628#0" expanded="true" />
+            <element signature="e#2410#2419#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Game.java">
+    <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Block.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7123" max-vertical-offset="7259">
-          <caret line="419" column="5" selection-start-line="419" selection-start-column="5" selection-end-line="419" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Assets.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20067453" vertical-offset="0" max-vertical-offset="884">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.22091062" vertical-offset="532" max-vertical-offset="7327">
+          <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
           <folding />
         </state>
       </provider>

@@ -86,10 +86,9 @@ public class Block extends DynamicGameObject{
                 coords.add(new Vector2(20,3));
                 break;
         }
-
-        return;
     }
 
+    /* TODO: if the board movement works, delete these movement functions */
     public boolean moveDown(){
     	copyCoords();
 
