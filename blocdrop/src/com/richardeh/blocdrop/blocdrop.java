@@ -4,20 +4,24 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class blocdrop implements ApplicationListener {
 	
-	private static final int VIRTUAL_WIDTH = 480;
-	private static final int VIRTUAL_HEIGHT = 720;
+	private static final int VIRTUAL_WIDTH = 640;
+	private static final int VIRTUAL_HEIGHT = 800;
 	private static final float ASPECT_RATIO = (float)VIRTUAL_WIDTH/(float)VIRTUAL_HEIGHT;
 	
-	private OrthographicCamera camera;
+	private Camera camera;
 	private SpriteBatch batch;
 	private Sprite blueSprite, redSprite, greenSprite, orangeSprite,yellowSprite, whiteSprite;
 	private Sprite zeroSprite, oneSprite, twoSprite, threeSprite,fourSprite,fiveSprite,sixSprite,sevenSprite,eightSprite,nineSprite;
@@ -27,6 +31,11 @@ public class blocdrop implements ApplicationListener {
     private float deltaTime, maxTime;
     public float speed, speedMod;
 	float w, h;
+	
+	private float m_fboScaler = 1.5f;
+	private boolean m_fboEnabled = true;
+	private FrameBuffer m_fbo = null;
+	private TextureRegion m_fboRegion = null;
 	
 	@Override
 	public void create() {		
@@ -63,7 +72,6 @@ public class blocdrop implements ApplicationListener {
         Assets.music.setLooping(true);
         Assets.music.play();
 	}
-
 	@Override
 	public void dispose() {
 		batch.dispose();
@@ -72,16 +80,19 @@ public class blocdrop implements ApplicationListener {
 
 	@Override
 	public void render() {
-		// TODO: Fix the camera so that it fills the whole screen regardless of screen size
-		Gdx.gl.glViewport((int)viewport.x, (int)viewport.y, (int)viewport.width, (int)viewport.height);
+		
 		Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		camera.update();
+
+		Gdx.gl.glViewport((int)viewport.x, (int)viewport.y, (int)viewport.width, (int)viewport.height);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		ArrayList<ArrayList<Integer>> currentBoard = game.getBoard().getBoard();
         Sprite currSprite = new Sprite();
 		batch.begin();
-		batch.draw(Assets.backgroundRegion,0,0);
+		
+		batch.draw(Assets.background,0,0,viewport.width,viewport.height);
+		
 		for(int x=0;x<currentBoard.size()-3;x++){
 			for(int y=0;y<currentBoard.get(x).size();y++){
 				
@@ -110,6 +121,7 @@ public class blocdrop implements ApplicationListener {
 						default:
 							break;
 				}
+				// TODO: change setPosition so it draws on relative position, rather than absolute pixel position
 				currSprite.setPosition(32*y+64, 32*x+32);
                 currSprite.draw(batch);
 			}
@@ -298,7 +310,6 @@ public class blocdrop implements ApplicationListener {
                     break;
             }
             numSprite.setPosition(480+i*32,325);
-            System.out.println(480+i*32);
             numSprite.draw(batch);
         }
         batch.end();

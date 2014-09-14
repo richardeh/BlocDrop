@@ -85,15 +85,18 @@ public class Board {
     public boolean moveBlock(Block block, Direction direction){
         // attempt to move a block
         Vector2 modifier = getModifier(direction);
-        ArrayList<Vector2> current = block.getCoords();
 
         // return false if the given direction is blocked
         if(!canMove(block,modifier)) return false;
 
+        ArrayList<Vector2> current = block.getCoords();
         for(Vector2 v:current){
             board.get((int)v.x).set((int)v.y,0);
-            v.add(modifier);
-            board.get((int)v.x).set((int)v.y,block.getValue());
+        }
+        for(Vector2 v:current){
+
+            v.add(modifier);            
+        	board.get((int)v.x).set((int)v.y,block.getValue());
         }
         return true;
     }
@@ -123,8 +126,8 @@ public class Board {
         Vector2 modifier = new Vector2();
         switch (direction){
             case Down:
-                modifier.y = 1;
-                modifier.x = 0;
+                modifier.x = -1;
+                modifier.y = 0;
                 break;
             case Right:
                 modifier.x = 1;

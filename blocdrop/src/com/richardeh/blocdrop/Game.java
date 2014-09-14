@@ -365,6 +365,7 @@ public class Game implements GestureListener, InputProcessor {
     	}
     	if(i == Keys.DOWN){
     		// TODO: fix disappearing glitch
+    		//board.moveBlock(currentBlock, Board.Direction.Down)
     		tryMoveDown();
     	}
         return false;
