@@ -47,7 +47,8 @@ public class blocdrop implements ApplicationListener {
 		board = new Board();
 		board.start();
 		game = new Game(board);
-		
+
+        // TODO: manipulate the sprite images to fit correctly on the new relative-size screen
 		whiteSprite = new Sprite(Assets.whiteRegion);
 		blueSprite = new Sprite(Assets.blueRegion);
 		redSprite = new Sprite(Assets.redRegion);
@@ -92,7 +93,9 @@ public class blocdrop implements ApplicationListener {
 		batch.begin();
 		
 		batch.draw(Assets.background,0,0,viewport.width,viewport.height);
-		
+		float w=viewport.width/Assets.backgroundRegion.getRegionWidth();
+        float h=viewport.height/Assets.backgroundRegion.getRegionHeight();
+
 		for(int x=0;x<currentBoard.size()-3;x++){
 			for(int y=0;y<currentBoard.get(x).size();y++){
 				
@@ -121,8 +124,8 @@ public class blocdrop implements ApplicationListener {
 						default:
 							break;
 				}
-				// TODO: change setPosition so it draws on relative position, rather than absolute pixel position
-				currSprite.setPosition(32*y+64, 32*x+32);
+				// TODO: this should work, test it
+				currSprite.setPosition((32*y+64)*w, (32*x+32)*h);
                 currSprite.draw(batch);
 			}
 		}
@@ -176,6 +179,9 @@ public class blocdrop implements ApplicationListener {
         Block next = game.getNextBlock();
         Sprite currSprite = new Sprite();
         ArrayList<Vector2> positions = new ArrayList<Vector2>();
+
+        float w=viewport.width/Assets.backgroundRegion.getRegionWidth();
+        float h=viewport.height/Assets.backgroundRegion.getRegionHeight();
 
         switch(next.getShape()){
             case O:
@@ -250,7 +256,7 @@ public class blocdrop implements ApplicationListener {
         }
 
         for(Vector2 v:positions){
-            currSprite.setPosition(v.x*32+480,v.y*32+513);
+            currSprite.setPosition((v.x*32+480)*w,(v.y*32+513)*h);
             currSprite.draw(batch);
         }
     }
@@ -264,6 +270,9 @@ public class blocdrop implements ApplicationListener {
     private void drawScoreBoard(int score){
         // Draw the scoreboard
         Sprite numSprite;
+
+        float w=viewport.width/Assets.backgroundRegion.getRegionWidth();
+        float h=viewport.height/Assets.backgroundRegion.getRegionHeight();
         // Determine the digits of the score
         int[] digits = new int[4];
         digits[0] = ((score %10000)/1000);
@@ -309,7 +318,7 @@ public class blocdrop implements ApplicationListener {
                 	numSprite = zeroSprite;
                     break;
             }
-            numSprite.setPosition(480+i*32,325);
+            numSprite.setPosition((480+i*32)*w,(325*h));
             numSprite.draw(batch);
         }
         batch.end();
