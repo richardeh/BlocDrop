@@ -7,11 +7,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -32,11 +29,6 @@ public class blocdrop implements ApplicationListener {
     public float speed, speedMod;
 	float w, h;
 	
-	private float m_fboScaler = 1.5f;
-	private boolean m_fboEnabled = true;
-	private FrameBuffer m_fbo = null;
-	private TextureRegion m_fboRegion = null;
-	
 	@Override
 	public void create() {		
 		w = Gdx.graphics.getWidth();
@@ -48,7 +40,6 @@ public class blocdrop implements ApplicationListener {
 		board.start();
 		game = new Game(board);
 
-        // TODO: manipulate the sprite images to fit correctly on the new relative-size screen
 		whiteSprite = new Sprite(Assets.whiteRegion);
 		blueSprite = new Sprite(Assets.blueRegion);
 		redSprite = new Sprite(Assets.redRegion);
@@ -82,7 +73,7 @@ public class blocdrop implements ApplicationListener {
 	@Override
 	public void render() {
 		
-		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		
 		camera.update();
 
@@ -93,8 +84,8 @@ public class blocdrop implements ApplicationListener {
 		batch.begin();
 		
 		batch.draw(Assets.background,0,0,viewport.width,viewport.height);
-		float w=viewport.width/Assets.backgroundRegion.getRegionWidth();
-        float h=viewport.height/Assets.backgroundRegion.getRegionHeight();
+		w=viewport.width/Assets.backgroundRegion.getRegionWidth();
+        h=viewport.height/Assets.backgroundRegion.getRegionHeight();
 
 		for(int x=0;x<currentBoard.size()-3;x++){
 			for(int y=0;y<currentBoard.get(x).size();y++){
@@ -124,8 +115,9 @@ public class blocdrop implements ApplicationListener {
 						default:
 							break;
 				}
-				// TODO: this should work, test it
-				currSprite.setPosition((32*y+64)*w, (32*x+32)*h);
+				// TODO: test and adjust
+				currSprite.setScale(w,h);
+				currSprite.setPosition((32*y+64)*w, (32*x+32)*w);
                 currSprite.draw(batch);
 			}
 		}
@@ -180,8 +172,8 @@ public class blocdrop implements ApplicationListener {
         Sprite currSprite = new Sprite();
         ArrayList<Vector2> positions = new ArrayList<Vector2>();
 
-        float w=viewport.width/Assets.backgroundRegion.getRegionWidth();
-        float h=viewport.height/Assets.backgroundRegion.getRegionHeight();
+        w=viewport.width/Assets.backgroundRegion.getRegionWidth();
+        h=viewport.height/Assets.backgroundRegion.getRegionHeight();
 
         switch(next.getShape()){
             case O:
@@ -256,6 +248,7 @@ public class blocdrop implements ApplicationListener {
         }
 
         for(Vector2 v:positions){
+        	currSprite.setScale(w,h);
             currSprite.setPosition((v.x*32+480)*w,(v.y*32+513)*h);
             currSprite.draw(batch);
         }
@@ -271,8 +264,8 @@ public class blocdrop implements ApplicationListener {
         // Draw the scoreboard
         Sprite numSprite;
 
-        float w=viewport.width/Assets.backgroundRegion.getRegionWidth();
-        float h=viewport.height/Assets.backgroundRegion.getRegionHeight();
+        w=viewport.width/Assets.backgroundRegion.getRegionWidth();
+        h=viewport.height/Assets.backgroundRegion.getRegionHeight();
         // Determine the digits of the score
         int[] digits = new int[4];
         digits[0] = ((score %10000)/1000);
@@ -318,6 +311,7 @@ public class blocdrop implements ApplicationListener {
                 	numSprite = zeroSprite;
                     break;
             }
+            numSprite.setScale(w,h);
             numSprite.setPosition((480+i*32)*w,(325*h));
             numSprite.draw(batch);
         }
