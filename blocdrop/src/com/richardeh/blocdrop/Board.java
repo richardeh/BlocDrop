@@ -94,8 +94,7 @@ public class Board {
             board.get((int)v.x).set((int)v.y,0);
         }
         for(Vector2 v:current){
-
-            v.add(modifier);            
+            v.add(modifier);
         	board.get((int)v.x).set((int)v.y,block.getValue());
         }
         return true;
@@ -107,11 +106,13 @@ public class Board {
         ArrayList<Vector2> future = new ArrayList<Vector2>();
 
         for(Vector2 v:current){
-            future.add(v.add(modifier));
+        	v.add(modifier);
+        	future.add(v.cpy());
+        	v.sub(modifier);
         }
         for(Vector2 v:future){
             // If the new position is out of bounds, return false
-            if(v.y>=BOARD_WIDTH-1||v.y<0||v.x<0) return false;
+            if(v.y>BOARD_WIDTH-1||v.y<0||v.x<0) return false;
 
             if(!current.contains(v)){
                 if(board.get((int)v.x).get((int)v.y)!=0){
@@ -130,12 +131,12 @@ public class Board {
                 modifier.y = 0;
                 break;
             case Right:
-                modifier.x = 1;
-                modifier.y = 0;
+                modifier.x = 0;
+                modifier.y = 1;
                 break;
             case Left:
-                modifier.x = -1;
-                modifier.y = 0;
+                modifier.x = 0;
+                modifier.y = -1;
                 break;
         }
         return modifier;

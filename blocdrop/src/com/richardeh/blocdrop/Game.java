@@ -50,7 +50,7 @@ public class Game implements GestureListener, InputProcessor {
 		if(isPlaying()){
 			// Game Loop
 
-			if(!tryMoveDown()){
+			if(!board.moveBlock(currentBlock, Board.Direction.Down)){
                 // Current block cannot move down
                 if(!hasMoved){
                     // Current block cannot move, and did not move
@@ -78,7 +78,7 @@ public class Game implements GestureListener, InputProcessor {
                     hasMoved = false;
                     score += BLOCK_SCORE;
                 }
-            }
+            } else hasMoved = true;
 		}
 	}
 	
@@ -155,29 +155,6 @@ public class Game implements GestureListener, InputProcessor {
     	return true;
     }
 
-    private boolean tryMoveDown(){
-    	// Attempt to move a piece down the board
-    	if(currentBlock.getLowest()<=0){
-    		return false;
-    	}
-    	board.removeBlock(currentBlock);
-    	if(!currentBlock.moveDown()) {
-    		currentBlock.undo();
-    		board.insertBlock(currentBlock);
-    		return false;
-    	}
-    	if(checkMove()){
-    		hasMoved = true;
-    		board.insertBlock(currentBlock);
-            return true;
-    	} else {
-    		currentBlock.undo();
-    		board.insertBlock(currentBlock);
-    		return false;
-    	}
-        
-    }
-
     private void gameOver(){
         // TODO: method stub
     	
@@ -231,35 +208,14 @@ public class Game implements GestureListener, InputProcessor {
         
     	if(vX>500){
     		// Swipe right
-    		if(currentBlock.getRightEdge()==board.getWidth()-1){return false;}
-    		board.removeBlock(currentBlock);
-    		currentBlock.moveRight();
-            if(checkMove()){
-                hasMoved = true;
-                board.insertBlock(currentBlock);
-                return true;
-            } else {
-                currentBlock.undo();
-                board.insertBlock(currentBlock);
-                return false;
-            }
+    		board.moveBlock(currentBlock, Board.Direction.Right);
     	}
     	if(vX<-500){
     		// Swipe Left
-    		if(currentBlock.getLeftEdge()==0){return false;}
-    		board.removeBlock(currentBlock);
-    		currentBlock.moveLeft();
-            if(checkMove()){
-                hasMoved = true;
-                board.insertBlock(currentBlock);
-                return true;
-            } else {
-                currentBlock.undo();
-                board.insertBlock(currentBlock);
-                return false;
-            }
+    		board.moveBlock(currentBlock, Board.Direction.Left);
     	}
     	if(vY<-500){
+    		// Swipe Up - rotate
     		// TODO: check to make sure the rotate won't cause an error
             if(currentBlock.getShape() == Block.Shape.O) return false;
     		board.removeBlock(currentBlock);
@@ -276,7 +232,7 @@ public class Game implements GestureListener, InputProcessor {
     	}
         if(vY>500){
             // swipe down
-            tryMoveDown();
+            board.moveBlock(currentBlock, Board.Direction.Down);
         }
         return false;
     }
@@ -328,45 +284,16 @@ public class Game implements GestureListener, InputProcessor {
         		return false;
         	}
     	}
+    	
     	if(i == Keys.RIGHT) {
-    		for(Vector2 v:currentBlock.getCoords()){
-        		if (v.y==board.getWidth()-1) return false;
-        		
-        	}
-    		
-    		board.removeBlock(currentBlock);
-    		
-    		currentBlock.moveRight();
-    		if(checkMove()){
-        		hasMoved = true;
-        		board.insertBlock(currentBlock);
-                return true;
-        	} else {
-        		currentBlock.undo();
-        		board.insertBlock(currentBlock);
-        		return false;
-        	}
+    		board.moveBlock(currentBlock, Board.Direction.Right);
     	}
     	if(i == Keys.LEFT) {
-    		for(Vector2 v:currentBlock.getCoords()){
-        		if (v.y==0) return false;
-        	}
-    		board.removeBlock(currentBlock);
-    		currentBlock.moveLeft();
-    		if(checkMove()){
-        		hasMoved = true;
-        		board.insertBlock(currentBlock);
-                return true;
-        	} else {
-        		currentBlock.undo();
-        		board.insertBlock(currentBlock);
-        		return false;
-        	}
+    		board.moveBlock(currentBlock, Board.Direction.Left);
     	}
     	if(i == Keys.DOWN){
-    		// TODO: fix disappearing glitch
-    		//board.moveBlock(currentBlock, Board.Direction.Down)
-    		tryMoveDown();
+    		
+    		if(board.moveBlock(currentBlock, Board.Direction.Down)) hasMoved = true;
     	}
         return false;
     }
