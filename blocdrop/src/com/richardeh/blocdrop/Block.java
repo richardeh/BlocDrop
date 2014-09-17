@@ -88,35 +88,6 @@ public class Block extends DynamicGameObject{
         }
     }
 
-    /* TODO: if the board movement works, delete these movement functions */
-    public boolean moveDown(){
-    	copyCoords();
-
-    	if(getLowest()==0){
-    		return false;
-    	}
-    	for(Vector2 v:coords){
-    		coords.set(coords.indexOf(v), new Vector2(v.x-1, v.y));
-      	}
-        return true;
-    }
-
-    public void moveRight(){
-
-    	copyCoords();
-    	for(Vector2 v:coords){
-    		coords.set(coords.indexOf(v), new Vector2(v.x, v.y+1));
-    	}
-    }
-    
-    public void moveLeft(){
-    	copyCoords();
-    	
-    	for(Vector2 v:coords){
- 			coords.set(coords.indexOf(v), new Vector2(v.x, v.y-1));
-    	}
-    }
-       
     public void rotate(){
         float x,y;
         copyCoords();

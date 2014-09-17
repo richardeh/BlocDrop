@@ -26,8 +26,8 @@
       <file leaf-file-name="blocdrop.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/blocdrop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1562" max-vertical-offset="5355">
-              <caret line="273" column="15" selection-start-line="273" selection-start-column="14" selection-end-line="273" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="4522" max-vertical-offset="5542">
+              <caret line="266" column="15" selection-start-line="266" selection-start-column="15" selection-end-line="266" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -46,29 +46,21 @@
       <file leaf-file-name="Game.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3570" max-vertical-offset="6409">
-              <caret line="228" column="25" selection-start-line="228" selection-start-column="25" selection-end-line="228" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3995" max-vertical-offset="5168">
+              <caret line="184" column="5" selection-start-line="184" selection-start-column="5" selection-end-line="184" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Board.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Board.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1566" max-vertical-offset="2346">
-              <caret line="119" column="13" selection-start-line="119" selection-start-column="13" selection-end-line="119" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Block.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Block.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.1551434" vertical-offset="1348" max-vertical-offset="7327">
-              <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
-              <folding />
+            <state vertical-scroll-proportion="0.19730185" vertical-offset="1447" max-vertical-offset="2771">
+              <caret line="103" column="30" selection-start-line="103" selection-start-column="30" selection-end-line="103" selection-end-column="30" />
+              <folding>
+                <element signature="e#2464#2473#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,9 +77,9 @@
       <list>
         <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Assets.java" />
         <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Game.java" />
-        <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Board.java" />
-        <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Block.java" />
         <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/blocdrop.java" />
+        <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Block.java" />
+        <option value="$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Board.java" />
       </list>
     </option>
   </component>
@@ -435,7 +427,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6477" max-vertical-offset="7072">
           <caret line="381" column="0" selection-start-line="381" selection-start-column="0" selection-end-line="381" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="method#setStartCoords#0;class#Block#0" expanded="false" />
+            <element signature="method#rotate#0;class#Block#0" expanded="false" />
+            <element signature="method#getRightEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLeftEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLowest#0;class#Block#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -443,7 +441,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1377">
           <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding />
+          <folding>
+            <element signature="e#2464#2473#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -474,7 +474,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5967" max-vertical-offset="6783">
           <caret line="354" column="25" selection-start-line="354" selection-start-column="25" selection-end-line="354" selection-end-column="25" />
-          <folding />
+          <folding>
+            <element signature="method#setStartCoords#0;class#Block#0" expanded="false" />
+            <element signature="method#rotate#0;class#Block#0" expanded="false" />
+            <element signature="method#getRightEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLeftEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLowest#0;class#Block#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -482,7 +488,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1377">
           <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding />
+          <folding>
+            <element signature="e#2464#2473#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -513,7 +521,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5576" max-vertical-offset="6392">
           <caret line="331" column="25" selection-start-line="331" selection-start-column="25" selection-end-line="331" selection-end-column="25" />
-          <folding />
+          <folding>
+            <element signature="method#setStartCoords#0;class#Block#0" expanded="false" />
+            <element signature="method#rotate#0;class#Block#0" expanded="false" />
+            <element signature="method#getRightEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLeftEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLowest#0;class#Block#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -521,7 +535,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1054">
           <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-          <folding />
+          <folding>
+            <element signature="e#2464#2473#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -552,7 +568,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2414" max-vertical-offset="5899">
           <caret line="142" column="38" selection-start-line="142" selection-start-column="38" selection-end-line="142" selection-end-column="38" />
-          <folding />
+          <folding>
+            <element signature="method#setStartCoords#0;class#Block#0" expanded="false" />
+            <element signature="method#rotate#0;class#Block#0" expanded="false" />
+            <element signature="method#getRightEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLeftEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLowest#0;class#Block#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -560,7 +582,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="969">
           <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-          <folding />
+          <folding>
+            <element signature="e#2464#2473#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -591,7 +615,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="4930">
           <caret line="40" column="47" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
-          <folding />
+          <folding>
+            <element signature="method#setStartCoords#0;class#Block#0" expanded="false" />
+            <element signature="method#rotate#0;class#Block#0" expanded="false" />
+            <element signature="method#getRightEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLeftEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLowest#0;class#Block#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -599,7 +629,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="969">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2464#2473#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -630,7 +662,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4930">
           <caret line="40" column="47" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
-          <folding />
+          <folding>
+            <element signature="method#setStartCoords#0;class#Block#0" expanded="false" />
+            <element signature="method#rotate#0;class#Block#0" expanded="false" />
+            <element signature="method#getRightEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLeftEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLowest#0;class#Block#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -638,7 +676,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="969">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2464#2473#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -669,7 +709,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="4930">
           <caret line="40" column="47" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
-          <folding />
+          <folding>
+            <element signature="method#setStartCoords#0;class#Block#0" expanded="false" />
+            <element signature="method#rotate#0;class#Block#0" expanded="false" />
+            <element signature="method#getRightEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLeftEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLowest#0;class#Block#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -677,7 +723,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="969">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2464#2473#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -708,7 +756,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4760" max-vertical-offset="4913">
           <caret line="280" column="26" selection-start-line="280" selection-start-column="26" selection-end-line="280" selection-end-column="26" />
-          <folding />
+          <folding>
+            <element signature="method#setStartCoords#0;class#Block#0" expanded="false" />
+            <element signature="method#rotate#0;class#Block#0" expanded="false" />
+            <element signature="method#getRightEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLeftEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLowest#0;class#Block#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -716,7 +770,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="969">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2464#2473#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -747,7 +803,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1515" max-vertical-offset="2108">
           <caret line="101" column="40" selection-start-line="101" selection-start-column="40" selection-end-line="101" selection-end-column="40" />
-          <folding />
+          <folding>
+            <element signature="method#setStartCoords#0;class#Block#0" expanded="false" />
+            <element signature="method#rotate#0;class#Block#0" expanded="false" />
+            <element signature="method#getRightEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLeftEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLowest#0;class#Block#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -779,8 +841,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/blocdrop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1562" max-vertical-offset="5355">
-          <caret line="273" column="15" selection-start-line="273" selection-start-column="14" selection-end-line="273" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4522" max-vertical-offset="5542">
+          <caret line="266" column="15" selection-start-line="266" selection-start-column="15" selection-end-line="266" selection-end-column="15" />
           <folding />
         </state>
       </provider>
@@ -795,25 +857,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3876" max-vertical-offset="7225">
-          <caret line="228" column="25" selection-start-line="228" selection-start-column="25" selection-end-line="228" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2023" max-vertical-offset="2533">
-          <caret line="119" column="13" selection-start-line="119" selection-start-column="13" selection-end-line="119" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3995" max-vertical-offset="5168">
+          <caret line="184" column="5" selection-start-line="184" selection-start-column="5" selection-end-line="184" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Block.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1551434" vertical-offset="1348" max-vertical-offset="7327">
-          <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
-          <folding />
+        <state vertical-scroll-proportion="0.7419899" vertical-offset="240" max-vertical-offset="1241">
+          <caret line="90" column="4" selection-start-line="90" selection-start-column="4" selection-end-line="90" selection-end-column="4" />
+          <folding>
+            <element signature="method#setStartCoords#0;class#Block#0" expanded="false" />
+            <element signature="method#rotate#0;class#Block#0" expanded="false" />
+            <element signature="method#getRightEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLeftEdge#0;class#Block#0" expanded="false" />
+            <element signature="method#getLowest#0;class#Block#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blocdrop/src/com/richardeh/blocdrop/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19730185" vertical-offset="1447" max-vertical-offset="2771">
+          <caret line="103" column="30" selection-start-line="103" selection-start-column="30" selection-end-line="103" selection-end-column="30" />
+          <folding>
+            <element signature="e#2464#2473#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

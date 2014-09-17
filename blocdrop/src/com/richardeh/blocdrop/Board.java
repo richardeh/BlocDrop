@@ -100,6 +100,30 @@ public class Board {
         return true;
     }
 
+    public boolean rotateBlock(Block block){
+        // TODO: test this out
+        ArrayList<Vector2> current = block.getCoords();
+        ArrayList<Vector2> future = new ArrayList<Vector2>();
+
+        block.rotate();
+        while(block.getRightEdge()>this.getWidth()){
+            moveBlock(block, Direction.Left);
+        }
+
+        future = block.getCoords();
+
+        for(Vector2 v:future){
+            if(board.get((int)v.x).get((int)v.y)!=0){
+                block.undo();
+                return false;
+            }
+        }
+
+
+
+        return true;
+    }
+
     private boolean canMove(Block block, Vector2 modifier){
 
         ArrayList<Vector2> current = block.getCoords();
