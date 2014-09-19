@@ -283,6 +283,7 @@ public class Game implements GestureListener, InputProcessor {
         		board.insertBlock(currentBlock);
         		return false;
         	}
+    		//board.rotateBlock(currentBlock);
     	}
     	
     	if(i == Keys.RIGHT) {
