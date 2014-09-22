@@ -38,6 +38,13 @@ public class Block extends DynamicGameObject{
         this.value = value;
 	}
 
+	public Block(Shape shape, int value, Orientation orientation, ArrayList<Vector2> coordinates){
+		super(0,0,64,64);
+		this.shape = shape;
+		this.orientation = orientation;
+		this.coords = coordinates;
+		prevCoords = new ArrayList<Vector2>();
+	}
 
     private void setStartCoords(){
     	// TODO: this should really be a function of the game, not the block itself
@@ -407,5 +414,9 @@ public class Block extends DynamicGameObject{
     	for(Vector2 v:coords){
     		prevCoords.add(v);
     	}
+    }
+    
+    public Block copy(){
+    	return new Block(this.shape, this.value, this.orientation, this.coords);
     }
 }

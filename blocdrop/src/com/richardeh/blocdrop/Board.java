@@ -102,25 +102,19 @@ public class Board {
 
     public boolean rotateBlock(Block block){
         // TODO: test this out
-        ArrayList<Vector2> current = block.getCoords();
-        ArrayList<Vector2> future = new ArrayList<Vector2>();
-
+        Block checker = block.copy();
+        checker.rotate();
+        for(Vector2 v:checker.getCoords()){
+        	if(!block.getCoords().contains(v)){
+        		if(board.get((int)v.x).get((int)v.y)!=0){
+        			return false;
+        		}
+        	}
+        }
+        for(Vector2 v:block.getCoords()){
+        	board.get((int)v.x).set((int)v.y,0);
+        }
         block.rotate();
-        while(block.getRightEdge()>this.getWidth()){
-            moveBlock(block, Direction.Left);
-        }
-
-        future = block.getCoords();
-
-        for(Vector2 v:future){
-            if(board.get((int)v.x).get((int)v.y)!=0){
-                block.undo();
-                return false;
-            }
-        }
-
-
-
         return true;
     }
 
