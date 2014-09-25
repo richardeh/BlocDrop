@@ -102,17 +102,13 @@ public class Board {
 
     public boolean rotateBlock(Block block){
         // TODO: test this out
-        Block checker = block.copy();
-        checker.rotate();
-        for(Vector2 v:checker.getCoords()){
-        	if(!block.getCoords().contains(v)){
-        		if(board.get((int)v.x).get((int)v.y)!=0){
-        			return false;
-        		}
-        	}
-        }
-        for(Vector2 v:block.getCoords()){
-        	board.get((int)v.x).set((int)v.y,0);
+        Block checker = new Block(block.getShape(),block.getValue(), block.getOrientation(), block.getCoords());
+        
+        try{
+        	block.rotate();
+        } catch(IndexOutOfBoundsException e) {
+        	block = checker;
+        	moveBlock(block, Direction.Left);
         }
         block.rotate();
         return true;
