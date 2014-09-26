@@ -96,7 +96,7 @@ public class Block extends DynamicGameObject{
         }
     }
 
-    public void rotate(){
+    public void rotate(int boardWidth){
         float x,y;
         copyCoords();
 
@@ -115,6 +115,7 @@ public class Block extends DynamicGameObject{
                         // 3 x x    x x x
                         // 2 x x -> 1 2 3
                         // 1 0 x    0 x x
+                        if(y>boardWidth-2) y=boardWidth-2;
                         coords.add(new Vector2(x,y-1));
                         coords.add(new Vector2(x + 1, y-1));
                         coords.add(new Vector2(x + 1, y));
@@ -135,6 +136,8 @@ public class Block extends DynamicGameObject{
                         // 0 1 x    x x x
                         // x 2 x -> x x 0
                         // x 3 x    3 2 1
+                        if(y>boardWidth-3) y=boardWidth-3;
+
                         coords.add(new Vector2(x-1, y+2));
                         coords.add(new Vector2(x - 2, y + 2));
                         coords.add(new Vector2(x-2,y+1));
@@ -172,7 +175,7 @@ public class Block extends DynamicGameObject{
                     	// x 1 x     x 0 x
                     	// 0 2 x ->  3 2 1
                     	// x 3 x     x x x
-
+                        if(y>boardWidth-3) y=boardWidth-3;
                         coords.add(new Vector2(x + 1, y + 1));
                         coords.add(new Vector2(x, y + 2));
                         coords.add(new Vector2(x, y+1));
@@ -196,7 +199,7 @@ public class Block extends DynamicGameObject{
                     	// 3 x x    x x x
                     	// 2 0 x -> 1 2 3
                     	// 1 x x    x 0 x
-
+                        if(y>boardWidth-2) y=boardWidth-2;
                         coords.add(new Vector2(x - 1, y));
                         coords.add(new Vector2(x, y - 1));
                         coords.add(new Vector2(x , y));
@@ -212,6 +215,7 @@ public class Block extends DynamicGameObject{
                         //  x 3 x    x x x
                         //  x 2 x -> 0 x x
                         //  0 1 x    1 2 3
+                        if(y>boardWidth-3) y=boardWidth-3;
                         coords.add(new Vector2(x + 1, y));
                         coords.add(new Vector2(x, y));
                         coords.add(new Vector2(x, y + 1));
@@ -233,6 +237,7 @@ public class Block extends DynamicGameObject{
                         // 1 0 x     x x x
                         // 2 x x  -> 3 2 1
                         // 3 x x     x x 0
+                        if(y>boardWidth-2) y=boardWidth-2;
                         coords.add(new Vector2(x-2, y+1));
                         coords.add(new Vector2(x - 1, y + 1));
                         coords.add(new Vector2(x - 1, y));
@@ -268,7 +273,7 @@ public class Block extends DynamicGameObject{
                     	//  x 3 x      x x x
                     	//  1 2 x  ->  3 2 x
                     	//  0 x x      x 1 0
-                    	
+                        if(y>boardWidth-3) y=boardWidth-3;
                     	coords.add(new Vector2(x, y + 2));
                     	coords.add(new Vector2(x, y + 1));
                     	coords.add(new Vector2(x+1, y+1));
@@ -301,7 +306,7 @@ public class Block extends DynamicGameObject{
                     	// 3 x x   x x x
                     	// 2 1 x-> x 2 3
                     	// x 0 x   0 1 x
-                    	
+                        if(y>boardWidth-2) y=boardWidth-3;
                     	coords.add(new Vector2(x, y-1));
                     	coords.add(new Vector2(x, y));
                     	coords.add(new Vector2(x+1,y));
@@ -324,7 +329,7 @@ public class Block extends DynamicGameObject{
                     	// 2 x x x     x x x x
                     	// 1 x x x     x x x x
                         // 0 x x x  -> 0 1 2 3
-
+                        if(y>boardWidth-4) y=boardWidth-4;
                         for(int i=(int)y;i<y+4;i++){
                             coords.add(new Vector2(x, i));
                         }

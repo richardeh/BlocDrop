@@ -105,12 +105,12 @@ public class Board {
         Block checker = new Block(block.getShape(),block.getValue(), block.getOrientation(), block.getCoords());
         
         try{
-        	block.rotate();
+        	block.rotate(BOARD_WIDTH);
         } catch(IndexOutOfBoundsException e) {
         	block = checker;
         	moveBlock(block, Direction.Left);
         }
-        block.rotate();
+        //block.rotate(BOARD_WIDTH);
         return true;
     }
 
