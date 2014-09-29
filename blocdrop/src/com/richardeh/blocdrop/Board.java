@@ -101,16 +101,16 @@ public class Board {
     }
 
     public boolean rotateBlock(Block block){
-        // TODO: test this out
+        // TODO: fix removing old positions
         Block checker = new Block(block.getShape(),block.getValue(), block.getOrientation(), block.getCoords());
-        
+        removeBlock(block);
         try{
         	block.rotate(BOARD_WIDTH);
         } catch(IndexOutOfBoundsException e) {
         	block = checker;
         	moveBlock(block, Direction.Left);
         }
-        //block.rotate(BOARD_WIDTH);
+        insertBlock(block);
         return true;
     }
 

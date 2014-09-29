@@ -219,7 +219,7 @@ public class Game implements GestureListener, InputProcessor {
     		// TODO: check to make sure the rotate won't cause an error
             if(currentBlock.getShape() == Block.Shape.O) return false;
     		board.removeBlock(currentBlock);
-    		currentBlock.rotate();
+    		currentBlock.rotate(board.getWidth());
             if(checkMove()){
                 hasMoved = true;
                 board.insertBlock(currentBlock);
@@ -269,26 +269,10 @@ public class Game implements GestureListener, InputProcessor {
 
     	if(i == Keys.SPACE) isPaused = !isPaused;
     	if(i == Keys.UP) {
-    		// TODO: check to make sure the rotate won't cause an error
 
     		if(currentBlock.getShape() == Block.Shape.O) return false;
-    		try{
-    			board.removeBlock(currentBlock);
     		
-    		currentBlock.rotate();
-    		if(checkMove()){
-        		hasMoved = true;
-        		board.insertBlock(currentBlock);
-                return true;
-        	} else {
-        		currentBlock.undo();
-        		board.insertBlock(currentBlock);
-        		return false;
-        	}
-    		} catch(IndexOutOfBoundsException e){
-    			return false;
-    		}
-    		//board.rotateBlock(currentBlock);
+    		board.rotateBlock(currentBlock);
     	}
     	
     	if(i == Keys.RIGHT) {
