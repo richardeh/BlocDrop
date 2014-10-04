@@ -130,9 +130,8 @@ public class Game implements GestureListener, InputProcessor {
         return true;
     }
     
-    private boolean checkMove(){
+    /*private boolean checkMove(){
     	// Make sure there's nothing in the way
-    	// TODO: utilize the left/right functions to make sure we're not hitting an edge
     	
     	// create lists of the new and old coordinates
         ArrayList<Vector2> newCoords =currentBlock.getCoords();
@@ -153,7 +152,7 @@ public class Game implements GestureListener, InputProcessor {
         }
     	
     	return true;
-    }
+    }*/
 
     private void gameOver(){
         // TODO: method stub
@@ -201,7 +200,6 @@ public class Game implements GestureListener, InputProcessor {
 
     @Override
     public boolean fling(float vX, float vY, int i) {
-        // TODO: rewrite using board.move function
         if(isOver){
             return false;
         }
@@ -216,19 +214,10 @@ public class Game implements GestureListener, InputProcessor {
     	}
     	if(vY<-500){
     		// Swipe Up - rotate
-    		// TODO: check to make sure the rotate won't cause an error
-            if(currentBlock.getShape() == Block.Shape.O) return false;
-    		board.removeBlock(currentBlock);
-    		currentBlock.rotate(board.getWidth());
-            if(checkMove()){
-                hasMoved = true;
-                board.insertBlock(currentBlock);
-                return true;
-            } else {
-                currentBlock.undo();
-                board.insertBlock(currentBlock);
-                return false;
-            }
+    		if(currentBlock.getShape() == Block.Shape.O) return false;
+    		
+    		board.rotateBlock(currentBlock);
+    		
     	}
         if(vY>500){
             // swipe down
