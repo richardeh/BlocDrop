@@ -77,3 +77,18 @@ wants:
 - make better game music
 - make sounds for row elimination maybe?
 - tune the scoring system, maybe add 10 points for putting a piece down and 100 for completing a row
+
+[update 4 9/29/2014]
+- fixed rotation at edges
+- gesture detect works on android
+- scoreboard works
+- moved block movement and rotation (partially) to the board
+- game music is ok, it's four bars on an endless loop though.
+- scoring system is tuned
+
+- need to make the game replayable. currently to play a second game you have to exit and restart.
+
+wants:
+- consider expanding the score area, could get too high a score and overflow the area
+- consider making different music
+- start/help/pause/restart/exit functions?
