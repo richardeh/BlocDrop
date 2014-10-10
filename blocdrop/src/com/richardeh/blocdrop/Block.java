@@ -184,9 +184,9 @@ public class Block extends DynamicGameObject{
                     	break;
                     	
                     case Three:
-                    	// x 0 x    3 x x
-                    	// 3 2 1 -> 2 0 x
-                    	// x x x    1 x x
+                    	// x 0 x    x 3 x
+                    	// 3 2 1 -> x 2 0
+                    	// x x x    x 1 x
 
                         coords.add(new Vector2(x - 1, y+1));
                         coords.add(new Vector2(x - 2, y));
